@@ -5,7 +5,6 @@ import { AuthContext } from "../../providers/AuthProvider";
 
 
 const SocialLogin = () => {
-
     const { googleSignUp } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
