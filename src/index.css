@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* D1A054 */
+/* .bg-base-200 {
+    background-color: #D1A054;
+} */
+
+/* .drawer-side a {
+    background-color: transparent;
+}
+
+.drawer-side a.active {
+    color: white;
+
+} */
+
+
+.menu li>*:not(ul):not(.menu-title):not(details):active,
+.menu li>*:not(ul):not(.menu-title):not(details).active,
+.menu li>details>summary:active {
+    background-color: transparent;
+    color: white;
+}

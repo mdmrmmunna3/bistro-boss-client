@@ -1,0 +1,30 @@
+.featued-item {
+    background-image: url(../../../assets/home/featured.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 620px;
+}
+
+.feature-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+/* mobile device responsive start  */
+@media only screen and (max-width:576px) {
+    .text-style {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+    }
+}
+
+/* mobile device responsive end */

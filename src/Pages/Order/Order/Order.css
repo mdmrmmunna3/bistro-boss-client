@@ -1,0 +1,11 @@
+.react-tabs__tab-list {
+    border-bottom: 0;
+}
+
+.react-tabs__tab {
+    border: 0;
+}
+
+.react-tabs__tab--selected {
+    border-top: 2px solid yellow;
+}

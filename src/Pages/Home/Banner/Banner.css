@@ -1,0 +1,16 @@
+.thumbs-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* min-width: 100%;
+margin: 0;
+position: relative;
+text-align: center; */
+
+@media only screen and (min-width:992px) {
+    .carousel .slide {
+        height: 500px;
+    }
+}
