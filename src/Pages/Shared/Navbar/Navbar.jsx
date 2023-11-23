@@ -19,7 +19,7 @@ const Navbar = () => {
     const navOptions = <>
         <li><NavLink to="/" className={({ isActive }) => isActive ? 'active' : undefined} style={{ textTransform: 'uppercase', fontSize: "12px" }} >Home</NavLink></li>
         <li><NavLink to="/" className="text-xs uppercase">Contact us</NavLink></li>
-        <li><NavLink to="/" className="text-xs uppercase">Dashboard</NavLink></li>
+        <li><NavLink to="/dashboard" className="text-xs uppercase">Dashboard</NavLink></li>
         <li><NavLink to="/menu" className="text-xs  uppercase">Our menu</NavLink></li>
         <li><NavLink to="/order/salad" className="text-xs  uppercase">Our Shop</NavLink></li>
 

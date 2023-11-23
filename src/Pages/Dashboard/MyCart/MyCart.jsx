@@ -3,6 +3,7 @@ import useCart from "../../../Hooks/useCart";
 import { Link } from "react-router-dom";
 import { FaRegTrashAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
+import HeadingTitel from "../../../components/HeadingTitel/HeadingTitel";
 // import Loading from "../../Shared/Loading/Loading";
 
 // I have to struggle a lot to do this part.
@@ -44,20 +45,27 @@ const MyCart = () => {
     }
 
     return (
-        <div>
+        // className="px-14 w-full"
+        <div className="w-full md:w-3/4">
             <Helmet>
                 <title>Bistro Boss | MyCart</title>
             </Helmet>
 
-            <div className="uppercase flex justify-between items-center mb-6">
-                <h3 className="text-xl font-semibold ">Total Orders:{cart.length}</h3>
-                <h3 className="text-xl font-semibold ">Total Orders:${totalPrice}</h3>
+            {/* common heading  */}
+            <HeadingTitel
+                subHeading="My Cart"
+                heading="Wanna Add More?"
+            ></HeadingTitel>
+
+            <div className="uppercase flex justify-between items-center md:mb-6 mb-3 md:px-0 px-2">
+                <h3 className="md:text-xl text-xs font-semibold ">Total Orders:{cart.length}</h3>
+                <h3 className="md:text-xl text-xs font-semibold ">Total Price:${totalPrice}</h3>
                 <Link>
                     <button className="btn bg-[#D1A054] text-white btn-sm">Pay</button>
                 </Link>
             </div>
 
-            <div className="overflow-x-auto">
+            <div className="overflow-x-auto ">
                 <table className="table">
                     {/* head */}
                     <thead className="uppercase bg-[#D1A054] text-white">
@@ -90,7 +98,7 @@ const MyCart = () => {
                                 </td>
 
                                 <td>{item.name}</td>
-                                <td className="text-end">${item.price}</td>
+                                <td className="">${item.price}</td>
                                 <td>
                                     <button onClick={() => handleDelete(item)} className="btn btn-ghost bg-red-600 text-white btn-sm"><FaRegTrashAlt ></FaRegTrashAlt></button>
                                 </td>
