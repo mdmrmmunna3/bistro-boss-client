@@ -60,7 +60,7 @@ const MyCart = () => {
             <div className="overflow-x-auto">
                 <table className="table">
                     {/* head */}
-                    <thead className="uppercase bg-[#D1A054]">
+                    <thead className="uppercase bg-[#D1A054] text-white">
                         <tr>
                             <th>
                                 #

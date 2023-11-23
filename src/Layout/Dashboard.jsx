@@ -1,6 +1,6 @@
 import { NavLink, Outlet } from "react-router-dom";
 
-import { FaShoppingCart, FaHome, FaCalendarAlt, FaWallet, FaShoppingBag } from "react-icons/fa";
+import { FaShoppingCart, FaHome, FaCalendarAlt, FaWallet, FaShoppingBag, FaUtensils, FaBook, FaUsers } from "react-icons/fa";
 import { MdPostAdd, MdEditCalendar, MdOutlineMenu, MdContacts } from "react-icons/md";
 
 
@@ -8,6 +8,9 @@ import useCart from "../Hooks/useCart";
 
 const Dashboard = () => {
     const [cart] = useCart();
+    // TODO: load data from the server to have dynamic isAdmin based on data
+    const isAdmin = true;
+
     return (
         <div className="drawer lg:drawer-open">
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -25,13 +28,29 @@ const Dashboard = () => {
                         <p className="text-xl" style={{ letterSpacing: '3px' }}>Restaurant</p>
                     </div>
                     {/* Sidebar content here */}
-                    <li><NavLink to="/dashboard/home"><FaHome className="text-xl"></FaHome > User Home</NavLink></li>
-                    <li><NavLink to="/dashboard/reservention"><FaCalendarAlt className="text-xl"></FaCalendarAlt > Reservention</NavLink></li>
-                    <li><NavLink to="/dashboard/paymentHistory"><FaWallet className="text-xl"></FaWallet > Payment History</NavLink></li>
-                    <li><NavLink to="/dashboard/mycart"><FaShoppingCart className="text-xl"></FaShoppingCart> My Cart  <span className="badge badge-success">+{cart?.length || 0}</span>
-                    </NavLink></li>
-                    <li><NavLink to="/dashboard/addReview"><MdPostAdd className="text-xl"></MdPostAdd> Add Review</NavLink></li>
-                    <li><NavLink to="/dashboard/myBooking"><MdEditCalendar className="text-xl"></MdEditCalendar > My Booking</NavLink></li>
+
+                    {
+                        isAdmin ? <>
+                            <li><NavLink to="/dashboard/home"><FaHome className="text-xl"></FaHome > Admin Home</NavLink></li>
+                            <li><NavLink to="/dashboard/reservention"><FaUtensils className="text-xl"></ FaUtensils> Add Items </NavLink></li>
+                            <li><NavLink to="/dashboard/paymentHistory"><FaWallet className="text-xl"></FaWallet > Manage Items</NavLink></li>
+                            <li><NavLink to="/dashboard/mycart"><FaBook className="text-xl"></FaBook> Manage Bookings
+                            </NavLink></li>
+                            <li><NavLink to="/dashboard/allUsers"><FaUsers className="text-xl"></FaUsers> All Users</NavLink></li>
+
+                        </> : <>
+
+                            <li><NavLink to="/dashboard/home"><FaHome className="text-xl"></FaHome > User Home</NavLink></li>
+                            <li><NavLink to="/dashboard/reservention"><FaCalendarAlt className="text-xl"></FaCalendarAlt > Reservention</NavLink></li>
+                            <li><NavLink to="/dashboard/paymentHistory"><FaWallet className="text-xl"></FaWallet > Payment History</NavLink></li>
+                            <li><NavLink to="/dashboard/mycart"><FaShoppingCart className="text-xl"></FaShoppingCart> My Cart  <span className="badge badge-success">+{cart?.length || 0}</span>
+                            </NavLink></li>
+                            <li><NavLink to="/dashboard/addReview"><MdPostAdd className="text-xl"></MdPostAdd> Add Review</NavLink></li>
+                            <li><NavLink to="/dashboard/myBooking"><MdEditCalendar className="text-xl"></MdEditCalendar > My Booking</NavLink></li>
+
+                        </>
+                    }
+
 
                     <div className="divider"></div>
 
