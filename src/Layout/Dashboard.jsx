@@ -5,11 +5,14 @@ import { MdPostAdd, MdEditCalendar, MdOutlineMenu, MdContacts } from "react-icon
 
 
 import useCart from "../Hooks/useCart";
+import useAdmin from "../Hooks/useAdmin";
 
 const Dashboard = () => {
     const [cart] = useCart();
     // TODO: load data from the server to have dynamic isAdmin based on data
-    const isAdmin = true;
+    // const isAdmin = true;
+
+    const [isAdmin] = useAdmin();
 
     return (
         <div className="drawer lg:drawer-open">

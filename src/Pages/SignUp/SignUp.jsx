@@ -1,10 +1,11 @@
-import { useContext } from "react";
+
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
-import { AuthContext } from "../../providers/AuthProvider";
+
 import { Helmet } from "react-helmet-async";
 import Swal from "sweetalert2";
 import SocialLogin from "../../components/SocialLogin/SocialLogin";
+import useAuth from "../../Hooks/useAuth";
 
 
 const SignUp = () => {
@@ -15,7 +16,7 @@ const SignUp = () => {
         reset
     } = useForm();
 
-    const { createUser, userUpdateProfile } = useContext(AuthContext);
+    const { createUser, userUpdateProfile } = useAuth();
     const navigate = useNavigate();
 
 

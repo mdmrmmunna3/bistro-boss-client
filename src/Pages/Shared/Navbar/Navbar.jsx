@@ -1,12 +1,13 @@
-import { useContext } from "react";
+
 import { Link, NavLink } from "react-router-dom";
-import { AuthContext } from "../../../providers/AuthProvider";
+
 import { TiShoppingCart } from "react-icons/ti";
 import './Navbar.css'
 import useCart from "../../../Hooks/useCart";
+import useAuth from "../../../Hooks/useAuth";
 const Navbar = () => {
 
-    const { user, logOut } = useContext(AuthContext);
+    const { user, logOut } = useAuth();
     const [cart] = useCart();
     const handleLogOut = () => {
         logOut()
