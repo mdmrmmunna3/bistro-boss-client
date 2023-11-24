@@ -3,9 +3,12 @@ import { Helmet } from "react-helmet-async";
 import { FaRegTrashAlt, FaUserShield } from "react-icons/fa";
 import HeadingTitel from "../../../components/HeadingTitel/HeadingTitel";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 
 
 const AllUsers = () => {
+    const [axiosSecure] = useAxiosSecure();
+
     // this query function related tanstack query/react query version 3 
     //  const { data: users = [], refetch } = useQuery(['users'], async () => {
     //     const res = await fetch('http://localhost:5000/users')
@@ -16,8 +19,8 @@ const AllUsers = () => {
     const { data: users = [], refetch } = useQuery({
         queryKey: ['users'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/users')
-            return res.json();
+            const res = await axiosSecure('/users')
+            return res.data;
         }
     })
 
