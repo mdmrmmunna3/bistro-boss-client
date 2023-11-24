@@ -22,7 +22,7 @@ const Dashboard = () => {
             </div>
             <div className="drawer-side">
                 <label htmlFor="my-drawer-2" aria-label="close sidebar" className="drawer-overlay"></label>
-                <ul className="menu bg_none p-4 h-full w-80 uppercase bg-[#D1A054]">
+                <ul className="menu bg_none p-4 h-screen w-80 uppercase bg-[#D1A054]">
                     <div className="block uppercase font-semibold mb-10">
                         <p className="text-2xl">Bistro Boss</p>
                         <p className="text-xl" style={{ letterSpacing: '3px' }}>Restaurant</p>
