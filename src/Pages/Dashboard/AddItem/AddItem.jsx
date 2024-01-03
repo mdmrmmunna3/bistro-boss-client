@@ -2,11 +2,31 @@ import { Helmet } from "react-helmet-async";
 import HeadingTitel from "../../../components/HeadingTitel/HeadingTitel";
 import { ImSpoonKnife } from "react-icons/im";
 import { useForm } from 'react-hook-form';
+// import useAxiosSecure from './useAxiosSecure';
+
+const img_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_TOKEN;
 
 const AddItem = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
+    const img_hosting_url = `https://api.imgbb.com/1/upload?key=${img_hosting_key}`;
     const onSubmit = data => {
-        console.log(data)
+        // console.log(data)
+        const formData = new FormData();
+        formData.append('image', data.image[0]);
+
+        fetch(img_hosting_url, {
+            method: 'POST',
+            body: formData
+        })
+            .then(res => res.json())
+            .then(imgResponse => {
+                if (imgResponse.success) {
+                    const imgURL = imgResponse.data.display_url;
+                    const { name, price, category, recipe } = data;
+                    const newItem = { name, price: parseFloat(price), category, recipe, image: imgURL }
+                    console.log(newItem);
+                }
+            })
     };
     console.log(errors);
 
@@ -33,8 +53,8 @@ const AddItem = () => {
                         <div className="label">
                             <span className="label-text font-semibold">Category*</span>
                         </div>
-                        <select {...register("category", { required: true })} className="select select-bordered">
-                            <option disabled selected>Category</option>
+                        <select defaultValue="Category" {...register("category", { required: true })} className="select select-bordered">
+                            <option disabled >Category</option>
                             <option>Pizza</option>
                             <option>Soup</option>
                             <option>Salad</option>
