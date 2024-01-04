@@ -2,13 +2,16 @@ import { Helmet } from "react-helmet-async";
 import HeadingTitel from "../../../components/HeadingTitel/HeadingTitel";
 import { ImSpoonKnife } from "react-icons/im";
 import { useForm } from 'react-hook-form';
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import Swal from "sweetalert2";
 // import useAxiosSecure from './useAxiosSecure';
 
 const img_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_TOKEN;
 
 const AddItem = () => {
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const img_hosting_url = `https://api.imgbb.com/1/upload?key=${img_hosting_key}`;
+    const [axiosSecure] = useAxiosSecure();
     const onSubmit = data => {
         // console.log(data)
         const formData = new FormData();
@@ -25,6 +28,21 @@ const AddItem = () => {
                     const { name, price, category, recipe } = data;
                     const newItem = { name, price: parseFloat(price), category, recipe, image: imgURL }
                     console.log(newItem);
+
+                    axiosSecure.post('/menu', newItem)
+                        .then(data => {
+                            // console.log('after posting menu Item', data.data);
+                            if (data.data.insertedId) {
+                                reset()
+                                Swal.fire({
+                                    position: "center",
+                                    icon: "success",
+                                    title: "Item added successfully",
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                });
+                            }
+                        })
                 }
             })
     };
@@ -94,7 +112,8 @@ const AddItem = () => {
                     <input
                         style={
                             {
-                                background: `linear-gradient(90deg, #835D23 0%, #B58130 100%)`
+                                background: `linear-gradient(90deg, #835D23 0%, #B58130 100%)`,
+                                cursor: 'pointer'
                             }
                         }
                         className=" my-4 text-white px-8 py-2"
