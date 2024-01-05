@@ -1,10 +1,45 @@
 import { Helmet } from "react-helmet-async";
 import HeadingTitel from "../../../components/HeadingTitel/HeadingTitel";
 import useMenu from "../../../Hooks/useMenu";
+import { FaRegTrashAlt } from "react-icons/fa";
+import Swal from "sweetalert2";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 
 
 const ManageItems = () => {
-    const [menu] = useMenu();
+    const [menu, , refetch] = useMenu();
+    const [axiosSecure] = useAxiosSecure();
+
+    const handleDelete = item => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+
+                axiosSecure.delete(`/menu/${item._id}`)
+
+                    .then(res => {
+                        // console.log('deleted res', res.data);
+                        if (res.data.deletedCount > 0) {
+                            refetch();
+                            Swal.fire({
+                                title: "Deleted!",
+                                text: "Your Item has been deleted.",
+                                icon: "success"
+                            });
+                        }
+                    })
+
+
+            }
+        });
+    }
     return (
         <div className="md:w-3/4 w-full">
             <Helmet>
@@ -52,9 +87,9 @@ const ManageItems = () => {
 
                                 <td>{item.name}</td>
                                 <td className="">${item.price}</td>
-                                {/* <td>
-                                            <button onClick={() => handleDelete(item)} className="btn btn-ghost bg-red-600 text-white btn-sm"><FaRegTrashAlt ></FaRegTrashAlt></button>
-                                        </td> */}
+                                <td>
+                                    <button onClick={() => handleDelete(item)} className="btn btn-ghost bg-red-600 text-white btn-sm"><FaRegTrashAlt ></FaRegTrashAlt></button>
+                                </td>
                             </tr>)
                         }
 
