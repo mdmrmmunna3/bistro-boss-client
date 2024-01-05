@@ -2,7 +2,7 @@ import { NavLink, Outlet } from "react-router-dom";
 
 import { FaShoppingCart, FaHome, FaCalendarAlt, FaWallet, FaShoppingBag, FaUtensils, FaBook, FaUsers } from "react-icons/fa";
 import { MdPostAdd, MdEditCalendar, MdOutlineMenu, MdContacts } from "react-icons/md";
-
+import drawerImg from '../assets/icon/button.png'
 
 import useCart from "../Hooks/useCart";
 import useAdmin from "../Hooks/useAdmin";
@@ -20,7 +20,15 @@ const Dashboard = () => {
             <div className="drawer-content flex flex-col items-center ">
                 {/* Page content here */}
                 <Outlet></Outlet>
-                <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden ">Open drawer</label>
+                <label htmlFor="my-drawer-2" className="btn drawer-button lg:hidden "> Open
+                    <img src={drawerImg}
+                        style={
+                            {
+                                width: '30px'
+                            }
+                        }
+                    />
+                </label>
 
             </div>
             <div className="drawer-side">
@@ -36,8 +44,8 @@ const Dashboard = () => {
                         isAdmin ? <>
                             <li><NavLink to="/dashboard/home"><FaHome className="text-xl"></FaHome > Admin Home</NavLink></li>
                             <li><NavLink to="/dashboard/addItem"><FaUtensils className="text-xl"></ FaUtensils> Add Items </NavLink></li>
-                            <li><NavLink to="/dashboard/paymentHistory"><FaWallet className="text-xl"></FaWallet > Manage Items</NavLink></li>
-                            <li><NavLink to="/dashboard/mycart"><FaBook className="text-xl"></FaBook> Manage Bookings
+                            <li><NavLink to="/dashboard/manageItems"><FaWallet className="text-xl"></FaWallet > Manage Items</NavLink></li>
+                            <li><NavLink to="/dashboard/"><FaBook className="text-xl"></FaBook> Manage Bookings
                             </NavLink></li>
                             <li><NavLink to="/dashboard/allUsers"><FaUsers className="text-xl"></FaUsers> All Users</NavLink></li>
 
