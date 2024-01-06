@@ -4,7 +4,8 @@ import useMenu from "../../../Hooks/useMenu";
 import { FaRegTrashAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
-
+import { FaRegEdit } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const ManageItems = () => {
     const [menu, , refetch] = useMenu();
@@ -40,6 +41,10 @@ const ManageItems = () => {
             }
         });
     }
+
+    const handleUpdate = item => {
+
+    }
     return (
         <div className="md:w-3/4 w-full">
             <Helmet>
@@ -63,8 +68,8 @@ const ManageItems = () => {
                             <th>Item Image</th>
                             <th>Item Name</th>
                             <th>Price</th>
-                            <th>Action</th>
-                            <th>Action</th>
+                            <th>Update</th>
+                            <th>Delete</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -87,6 +92,12 @@ const ManageItems = () => {
 
                                 <td>{item.name}</td>
                                 <td className="">${item.price}</td>
+                                <td>
+                                    <Link to={`/dashboard/updateItem/${item._id}`}>
+                                        <button onClick={() => handleUpdate(item._id)} className="bg-[#D1A054] text-white btn btn-sm"><FaRegEdit /></button>
+
+                                    </Link>
+                                </td>
                                 <td>
                                     <button onClick={() => handleDelete(item)} className="btn btn-ghost bg-red-600 text-white btn-sm"><FaRegTrashAlt ></FaRegTrashAlt></button>
                                 </td>
