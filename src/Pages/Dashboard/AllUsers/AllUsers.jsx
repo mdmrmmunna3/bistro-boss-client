@@ -25,22 +25,52 @@ const AllUsers = () => {
     })
 
     const handleMakeAdmin = user => {
-        fetch(`http://localhost:5000/users/admin/${user._id}`, {
-            method: 'PATCH'
-        })
-            .then(res => res.json())
-            .then(data => {
-                if (data.modifiedCount) {
-                    refetch();
-                    Swal.fire({
-                        position: "top-center",
-                        icon: "success",
-                        title: `${user.name} is an Admin Now`,
-                        showConfirmButton: false,
-                        timer: 1500
-                    });
-                }
-            })
+        // fetch(`http://localhost:5000/users/admin/${user._id}`, {
+        //     method: 'PATCH'
+        // })
+        //     .then(res => res.json())
+        //     .then(data => {
+        //         if (data.modifiedCount) {
+        //             refetch();
+        //             Swal.fire({
+        //                 position: "top-center",
+        //                 icon: "success",
+        //                 title: `${user.name} is an Admin Now`,
+        //                 showConfirmButton: false,
+        //                 timer: 1500
+        //             });
+        //         }
+        //     })
+
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Make Admin?"
+        }).then((result) => {
+            if (result.isConfirmed) {
+
+                fetch(`http://localhost:5000/users/admin/${user._id}`, {
+                    method: 'PATCH'
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.modifiedCount) {
+                            refetch();
+                            Swal.fire({
+                                position: "top-center",
+                                icon: "success",
+                                title: `${user.name} is an Admin Now`,
+                                showConfirmButton: false,
+                                timer: 1500
+                            });
+                        }
+                    })
+            }
+        });
     }
 
     const handleDelete = user => {
