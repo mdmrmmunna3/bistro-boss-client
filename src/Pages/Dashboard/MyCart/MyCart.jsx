@@ -66,8 +66,8 @@ const MyCart = () => {
                     <div className="uppercase flex justify-between items-center md:mb-6 mb-3 md:px-0 px-2">
                         <h3 className="md:text-xl text-xs font-semibold ">Total Orders:{cart.length}</h3>
                         <h3 className="md:text-xl text-xs font-semibold ">Total Price:${totalPrice}</h3>
-                        <Link>
-                            <button className="btn bg-[#D1A054] text-white btn-sm">Pay</button>
+                        <Link to="/dashboard/payment">
+                            <button className="btn bg-[#D1A054] text-white btn-sm hover:text-black">Pay</button>
                         </Link>
                     </div>
 

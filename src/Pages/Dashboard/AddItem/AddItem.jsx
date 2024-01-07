@@ -51,7 +51,7 @@ const AddItem = () => {
     return (
         <div className="md:w-3/4 w-full">
             <Helmet>
-                <title>Bistro Boss | All_users</title>
+                <title>Bistro Boss | AddItems</title>
             </Helmet>
             {/* common heading  */}
             <HeadingTitel subHeading="What's new?" heading="Add An Item"></HeadingTitel>
