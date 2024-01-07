@@ -42,9 +42,7 @@ const ManageItems = () => {
         });
     }
 
-    const handleUpdate = item => {
 
-    }
     return (
         <div className="md:w-3/4 w-full">
             <Helmet>
@@ -94,7 +92,7 @@ const ManageItems = () => {
                                 <td className="">${item.price}</td>
                                 <td>
                                     <Link to={`/dashboard/updateItem/${item._id}`}>
-                                        <button onClick={() => handleUpdate(item._id)} className="bg-[#D1A054] text-white btn btn-sm"><FaRegEdit /></button>
+                                        <button className="bg-[#D1A054] text-white btn btn-sm"><FaRegEdit /></button>
 
                                     </Link>
                                 </td>

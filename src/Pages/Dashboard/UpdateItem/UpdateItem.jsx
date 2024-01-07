@@ -1,10 +1,54 @@
 import { useForm } from "react-hook-form";
 import HeadingTitel from "../../../components/HeadingTitel/HeadingTitel";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+// import useMenu from "../../../Hooks/useMenu";
+import Swal from "sweetalert2";
+import { useLoaderData } from "react-router-dom";
+// import useMenu from "../../../Hooks/useMenu";
 
 
+const img_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_TOKEN;
 const UpdateItem = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const onSubmit = () => {
+    const img_hosting_url = `https://api.imgbb.com/1/upload?key=${img_hosting_key}`;
+    const [axiosSecure] = useAxiosSecure();
+    const { _id } = useLoaderData();
+    // const [menu, , refetch] = useMenu();
+    // const { _id } = menu;
+
+    const onSubmit = async (data) => {
+        // console.log(data);
+        const formData = new FormData();
+        formData.append('image', data.image[0]);
+
+        fetch(img_hosting_url, {
+            method: 'POST',
+            body: formData
+        })
+            .then(res => res.json())
+            .then(imgResponse => {
+                console.log(imgResponse)
+                if (imgResponse.success) {
+                    const imgURL = imgResponse.data.display_url;
+                    const { name, price, category, recipe } = data;
+                    // console.log(data)
+                    const menuItem = { name, price: parseFloat(price), category, recipe, image: imgURL }
+                    console.log(menuItem);
+
+                    const menuRes = axiosSecure.patch(`/menu/${_id}`, menuItem);
+                    console.log(menuRes)
+                    if (menuItem) {
+                        // reset()
+                        Swal.fire({
+                            position: "center",
+                            icon: "success",
+                            title: `${data?.name} is updated to the menu.`,
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                    }
+                }
+            })
 
         console.log(errors);
     }
@@ -55,6 +99,14 @@ const UpdateItem = () => {
                         <span className="label-text font-semibold">Recipe Details*</span>
                     </div>
                     <textarea {...register("recipe", { required: true })} className="textarea textarea-bordered h-24" placeholder="Recipe Details"></textarea>
+
+                </label>
+
+                <label className="form-control w-full  max-w-xs">
+                    <div className="label">
+                        <span className="label-text font-semibold">Item Image*</span>
+                    </div>
+                    <input type="file" {...register("image", { required: true })} className="file-input file-input-bordered w-full  " />
 
                 </label>
 
