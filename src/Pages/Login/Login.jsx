@@ -30,7 +30,7 @@ const Login = () => {
         logIn(email, password)
             .then(result => {
                 const user = result.user;
-                console.log(user);
+                // console.log(user);
 
                 Swal.fire({
                     title: "User has been Login successfully",
