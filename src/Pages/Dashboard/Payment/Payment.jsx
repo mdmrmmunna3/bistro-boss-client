@@ -3,10 +3,14 @@ import HeadingTitel from "../../../components/HeadingTitel/HeadingTitel";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import CheckOutForm from "./CheckOutForm";
+import useCart from "../../../Hooks/useCart";
 
 
 const Payment = () => {
-    const stripePromise = loadStripe(import.meta.env.VITE_Payment_Gateway_PK)
+    const stripePromise = loadStripe(import.meta.env.VITE_Payment_Gateway_PK);
+    const [cart] = useCart();
+    const total = cart.reduce((sum, item) => sum + item?.price, 0);
+    const price = parseFloat(total.toFixed(2));
     return (
         <div className="md:w-3/4 w-full">
             <Helmet>
@@ -16,7 +20,7 @@ const Payment = () => {
             <HeadingTitel subHeading="Please Process" heading="Payment"></HeadingTitel>
 
             <Elements stripe={stripePromise}>
-                <CheckOutForm></CheckOutForm>
+                <CheckOutForm price={price}></CheckOutForm>
             </Elements>
         </div>
     );
