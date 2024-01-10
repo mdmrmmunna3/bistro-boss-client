@@ -11,14 +11,16 @@ const CheckOutForm = ({ price }) => {
     const [paymentCardError, setPaymentCardError] = useState('');
     const [axiosSecure] = useAxiosSecure();
     const [clientSecret, setClientSecret] = useState('');
+    const [processing, setProcessing] = useState(false);
+    const [transactionId, setTransactionId] = useState('');
 
     useEffect(() => {
-        axiosSecure.post('/create-payment-intent', price)
+        axiosSecure.post('/create-payment-intent', { price })
             .then(res => {
                 console.log(res.data.clientSecret);
                 setClientSecret(res.data.clientSecret);
             })
-    }, [price, axiosSecure]);
+    }, []);
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -42,8 +44,10 @@ const CheckOutForm = ({ price }) => {
         }
         else {
             setPaymentCardError('');
-            console.log('payment method', paymentMethod);
+            // console.log('payment method', paymentMethod);
         }
+
+        setProcessing(true);
 
         const { paymentIntent, error: confirmError } = await stripe.confirmCardPayment(
             clientSecret,
@@ -61,7 +65,14 @@ const CheckOutForm = ({ price }) => {
         if (confirmError) {
             console.log(confirmError);
         }
-        console.log(paymentIntent);
+
+        console.log('payment intent', paymentIntent);
+        setProcessing(false);
+        if (paymentIntent.status === 'succeeded') {
+            console.log(paymentIntent.id);
+            setTransactionId(paymentIntent.id);
+            //TODO next steps
+        }
     }
     return (
         <>
@@ -85,18 +96,22 @@ const CheckOutForm = ({ price }) => {
                 <button
                     style={
                         {
-                            background: `linear-gradient(90deg, #835D23 0%, #B58130 100%)`,
+                            // background: `linear-gradient(90deg, #835D23 0%, #B58130 100%)`,
 
                         }
                     }
-                    className="my-4 text-white px-6 py-1 rounded-sm "
-                    type="submit" disabled={!stripe || !clientSecret}>
+                    // className="my-4 text-white px-6 py-1 rounded-sm btn "
+                    className="my-4 text-white rounded-sm btn btn-sm btn-primary"
+                    type="submit" disabled={!stripe || !clientSecret || processing}>
                     Pay
                 </button>
             </form>
 
             {
                 paymentCardError && <p className="text-red-600">{paymentCardError}</p>
+            }
+            {
+                transactionId && <p className="text-green-600">Transaction Compelet with Transaction Id {transactionId}</p>
             }
         </>
     );

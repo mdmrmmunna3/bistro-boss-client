@@ -27,7 +27,7 @@ const FoodOrder = ({ item }) => {
                     if (data.insertedId) {
                         refetch(); // refetch cart to update the number of items in the cart
                         Swal.fire({
-                            position: "top-center",
+                            position: "center",
                             icon: "success",
                             title: "Your Food Order Add to Cart Successfully",
                             showConfirmButton: false,
