@@ -20,7 +20,7 @@ const Payment = () => {
             <HeadingTitel subHeading="Please Process" heading="Payment"></HeadingTitel>
 
             <Elements stripe={stripePromise}>
-                <CheckOutForm price={price}></CheckOutForm>
+                <CheckOutForm cart={cart} price={price}></CheckOutForm>
             </Elements>
         </div>
     );

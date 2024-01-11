@@ -4,7 +4,7 @@ import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import useAuth from "../../../Hooks/useAuth";
 
 
-const CheckOutForm = ({ price }) => {
+const CheckOutForm = ({ cart, price }) => {
     const stripe = useStripe();
     const elements = useElements();
     const { user } = useAuth();
@@ -20,7 +20,7 @@ const CheckOutForm = ({ price }) => {
                 console.log(res.data.clientSecret);
                 setClientSecret(res.data.clientSecret);
             })
-    }, []);
+    }, [price, axiosSecure]);
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -34,7 +34,7 @@ const CheckOutForm = ({ price }) => {
             return;
         }
 
-        const { error, paymentMethod } = await stripe.createPaymentMethod({
+        const { error } = await stripe.createPaymentMethod({
             type: 'card',
             card,
         });
@@ -69,9 +69,25 @@ const CheckOutForm = ({ price }) => {
         console.log('payment intent', paymentIntent);
         setProcessing(false);
         if (paymentIntent.status === 'succeeded') {
-            console.log(paymentIntent.id);
+            // console.log(paymentIntent.id);
             setTransactionId(paymentIntent.id);
-            //TODO next steps
+            // save payment informaiton to the server
+
+            const payment = {
+                email: user?.email,
+                transactionId: paymentIntent.id,
+                price,
+                quantity: cart.length,
+                itemsId: cart.map(item => item?._id),
+                itemsName: cart.map(item => item?.name)
+            }
+            axiosSecure.post('/payments', payment)
+                .then(res => {
+                    console.log(res.data);
+                    if (res.data.insertedId) {
+                        // display confirm
+                    }
+                })
         }
     }
     return (
