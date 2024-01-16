@@ -42,7 +42,7 @@ const Dashboard = () => {
 
                     {
                         isAdmin ? <>
-                            <li><NavLink to="/dashboard/home"><FaHome className="text-xl"></FaHome > Admin Home</NavLink></li>
+                            <li><NavLink to="/dashboard/adminhome"><FaHome className="text-xl"></FaHome > Admin Home</NavLink></li>
                             <li><NavLink to="/dashboard/addItem"><FaUtensils className="text-xl"></ FaUtensils> Add Items </NavLink></li>
                             <li><NavLink to="/dashboard/manageItems"><FaWallet className="text-xl"></FaWallet > Manage Items</NavLink></li>
                             <li><NavLink to="/dashboard/"><FaBook className="text-xl"></FaBook> Manage Bookings
@@ -51,7 +51,7 @@ const Dashboard = () => {
 
                         </> : <>
 
-                            <li><NavLink to="/dashboard/home"><FaHome className="text-xl"></FaHome > User Home</NavLink></li>
+                            <li><NavLink to="/dashboard/userhome"><FaHome className="text-xl"></FaHome > User Home</NavLink></li>
                             <li><NavLink to="/dashboard/reservention"><FaCalendarAlt className="text-xl"></FaCalendarAlt > Reservention</NavLink></li>
                             <li><NavLink to="/dashboard/paymentHistory"><FaWallet className="text-xl"></FaWallet > Payment History</NavLink></li>
                             <li><NavLink to="/dashboard/mycart"><FaShoppingCart className="text-xl"></FaShoppingCart> My Cart  <span className="badge badge-success">+{cart?.length || 0}</span>

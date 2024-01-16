@@ -5,10 +5,12 @@ import { TiShoppingCart } from "react-icons/ti";
 import './Navbar.css'
 import useCart from "../../../Hooks/useCart";
 import useAuth from "../../../Hooks/useAuth";
+import useAdmin from "../../../Hooks/useAdmin";
 const Navbar = () => {
 
     const { user, logOut } = useAuth();
     const [cart] = useCart();
+    const [isAdmin] = useAdmin();
     const handleLogOut = () => {
         logOut()
             .then(() => { })
@@ -20,7 +22,7 @@ const Navbar = () => {
     const navOptions = <>
         <li><NavLink to="/" className={({ isActive }) => isActive ? 'active' : undefined} style={{ textTransform: 'uppercase', fontSize: "12px" }} >Home</NavLink></li>
         <li><NavLink to="/contact" className="text-xs uppercase">Contact us</NavLink></li>
-        <li><NavLink to="/dashboard" className="text-xs uppercase">Dashboard</NavLink></li>
+        <li><NavLink to={isAdmin ? '/dashboard/adminhome' : '/dashboard/userhome'} className="text-xs uppercase">Dashboard</NavLink></li>
         <li><NavLink to="/menu" className="text-xs  uppercase">Our menu</NavLink></li>
         <li><NavLink to="/order/salad" className="text-xs  uppercase">Our Shop</NavLink></li>
 
