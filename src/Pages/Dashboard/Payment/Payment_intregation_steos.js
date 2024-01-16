@@ -11,4 +11,9 @@
  * 
  * 9. call payment intent api to get client secret and store in a state.
  * 10. use confirmCardPayment api with client secrct card info
+ * 
+ * ------------------
+ * problem solved:
+ * ------------------
+ *  solve axios secure hook. call base url on the outside hook
  */

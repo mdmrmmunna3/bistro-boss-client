@@ -2,7 +2,8 @@ import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { useEffect, useState } from "react";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import useAuth from "../../../Hooks/useAuth";
-
+import './CheckOutForm.css'
+// import Swal from "sweetalert2";
 
 const CheckOutForm = ({ cart, price }) => {
     const stripe = useStripe();
@@ -15,11 +16,13 @@ const CheckOutForm = ({ cart, price }) => {
     const [transactionId, setTransactionId] = useState('');
 
     useEffect(() => {
-        axiosSecure.post('/create-payment-intent', { price })
-            .then(res => {
-                console.log(res.data.clientSecret);
-                setClientSecret(res.data.clientSecret);
-            })
+        if (price > 0) {
+            axiosSecure.post('/create-payment-intent', { price })
+                .then(res => {
+                    // console.log(res.data.clientSecret);
+                    setClientSecret(res.data.clientSecret);
+                })
+        }
     }, [price, axiosSecure]);
 
     const handleSubmit = async (event) => {
@@ -77,15 +80,25 @@ const CheckOutForm = ({ cart, price }) => {
                 email: user?.email,
                 transactionId: paymentIntent.id,
                 price,
+                date: new Date(),
                 quantity: cart.length,
-                itemsId: cart.map(item => item?._id),
-                itemsName: cart.map(item => item?.name)
+                status: 'service pending',
+                cartsItemsId: cart.map(item => item?._id),
+                menuItemsId: cart.map(item => item?.menuItemId),
+                itemsName: cart.map(item => item?.name),
             }
             axiosSecure.post('/payments', payment)
                 .then(res => {
                     console.log(res.data);
-                    if (res.data.insertedId) {
+                    if (res.data.result.insertedId) {
                         // display confirm
+                        // Swal.fire({
+                        //     position: "top-end",
+                        //     icon: "success",
+                        //     title: `${user?.displayName}Payment Paid Successfully`,
+                        //     showConfirmButton: false,
+                        //     timer: 1000
+                        // });
                     }
                 })
         }
@@ -126,9 +139,9 @@ const CheckOutForm = ({ cart, price }) => {
             {
                 paymentCardError && <p className="text-red-600">{paymentCardError}</p>
             }
-            {
+            {/* {
                 transactionId && <p className="text-green-600">Transaction Compelet with Transaction Id {transactionId}</p>
-            }
+            } */}
         </>
     );
 };
