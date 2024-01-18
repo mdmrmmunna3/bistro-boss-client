@@ -6,6 +6,7 @@ import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 // import useAxiosSecure from './useAxiosSecure';
 
+
 const img_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_TOKEN;
 
 const AddItem = () => {
@@ -73,12 +74,12 @@ const AddItem = () => {
                         </div>
                         <select defaultValue="Category" {...register("category", { required: true })} className="select select-bordered">
                             <option disabled >Category</option>
-                            <option>Pizza</option>
-                            <option>Soup</option>
-                            <option>Salad</option>
-                            <option>Dessert</option>
-                            <option>Drinks</option>
-                            <option>Desi</option>
+                            <option value='pizza'>Pizza</option>
+                            <option value='soup'>Soup</option>
+                            <option value='salad'>Salad</option>
+                            <option value='dessert'>Dessert</option>
+                            <option value='drinks'>Drinks</option>
+                            <option value='desi'>Desi</option>
                         </select>
 
                     </label>
@@ -105,7 +106,7 @@ const AddItem = () => {
                     <div className="label">
                         <span className="label-text font-semibold">Item Image*</span>
                     </div>
-                    <input type="file" {...register("image", { required: true })} className="file-input file-input-bordered w-full  " />
+                    <input type="file" {...register("image", { required: true })} className="file-input file-input-bordered w-full " />
 
                 </label>
 

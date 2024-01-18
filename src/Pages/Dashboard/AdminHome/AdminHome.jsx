@@ -49,7 +49,7 @@ const AdminHome = () => {
                     className="stats-main flex flex-row items-center justify-center gap-x-3 rounded-lg shadow-lg ">
                     <div ><FaUsers className="text-3xl text-white"></FaUsers></div>
                     <div className="right-stat">
-                        <div className="lg:text-2xl text-xl text-white font-semibold">${stats?.users}</div>
+                        <div className="lg:text-2xl text-xl text-white font-semibold">{stats?.users}</div>
                         <div className="text-white font-semibold font-sans lg:text-2xl text-xl">New Users</div>
                     </div>
                 </div>
