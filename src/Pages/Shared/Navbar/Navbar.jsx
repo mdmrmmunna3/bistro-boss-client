@@ -11,6 +11,7 @@ const Navbar = () => {
     const { user, logOut } = useAuth();
     const [cart] = useCart();
     const [isAdmin] = useAdmin();
+
     const handleLogOut = () => {
         logOut()
             .then(() => { })
@@ -22,18 +23,27 @@ const Navbar = () => {
     const navOptions = <>
         <li><NavLink to="/" className={({ isActive }) => isActive ? 'active' : undefined} style={{ textTransform: 'uppercase', fontSize: "12px" }} >Home</NavLink></li>
         <li><NavLink to="/contact" className="text-xs uppercase">Contact us</NavLink></li>
-        <li><NavLink to={isAdmin ? '/dashboard/adminhome' : '/dashboard/userhome'} className="text-xs uppercase">Dashboard</NavLink></li>
+        {/* <li><NavLink to={isAdmin ? '/dashboard/adminhome' : '/dashboard/userhome'} className="text-xs uppercase">Dashboard</NavLink></li>  */}
+        {
+            user && isAdmin && <li><NavLink to='/dashboard/adminhome' className="text-xs uppercase">Dashboard</NavLink></li>
+        }
+        {
+            user && !isAdmin && <li><NavLink to='/dashboard/userhome' className="text-xs uppercase">Dashboard</NavLink></li>
+        }
+
         <li><NavLink to="/menu" className="text-xs  uppercase">Our menu</NavLink></li>
         <li><NavLink to="/order/salad" className="text-xs  uppercase">Our Shop</NavLink></li>
 
-        <li><NavLink to="/dashboard/mycart" className="text-xs  uppercase">
+        {user && <li><NavLink to="/dashboard/mycart" className="text-xs  uppercase">
             <button className="flex items-center justify-center">
                 <TiShoppingCart className="text-xl" />
                 <div className="badge badge-success">+{cart?.length || 0}</div>
             </button>
         </NavLink>
-        </li>
-        <li><NavLink to="/secret" className="text-xs  uppercase">Secret</NavLink></li>
+        </li>}
+
+        {/* <li><NavLink to="/secret" className="text-xs  uppercase">Secret</NavLink></li> */}
+
         {
             user ? <>
                 {/* <span>{user?.displayName}</span> */}

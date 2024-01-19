@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import useAuth from "../../../Hooks/useAuth";
 import './CheckOutForm.css'
-// import Swal from "sweetalert2";
+import Swal from "sweetalert2";
 
 const CheckOutForm = ({ cart, price }) => {
     const stripe = useStripe();
@@ -90,15 +90,15 @@ const CheckOutForm = ({ cart, price }) => {
             axiosSecure.post('/payments', payment)
                 .then(res => {
                     console.log(res.data);
-                    if (res.data.result.insertedId) {
+                    if (res.data?.insertedResult?.insertedId) {
                         // display confirm
-                        // Swal.fire({
-                        //     position: "top-end",
-                        //     icon: "success",
-                        //     title: `${user?.displayName}Payment Paid Successfully`,
-                        //     showConfirmButton: false,
-                        //     timer: 1000
-                        // });
+                        Swal.fire({
+                            position: "center",
+                            icon: "success",
+                            title: `${user?.displayName}Payment Paid Successfully`,
+                            showConfirmButton: false,
+                            timer: 1000
+                        });
                     }
                 })
         }

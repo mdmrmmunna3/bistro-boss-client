@@ -2,17 +2,19 @@ import { NavLink, Outlet } from "react-router-dom";
 
 import { FaShoppingCart, FaHome, FaCalendarAlt, FaWallet, FaShoppingBag, FaUtensils, FaBook, FaUsers } from "react-icons/fa";
 import { MdPostAdd, MdEditCalendar, MdOutlineMenu, MdContacts } from "react-icons/md";
+import { FiLogOut } from "react-icons/fi";
 import drawerImg from '../assets/icon/button.png'
 
 import useCart from "../Hooks/useCart";
 import useAdmin from "../Hooks/useAdmin";
+// import useAuth from "../Hooks/useAuth";
 
 const Dashboard = () => {
     const [cart] = useCart();
     // TODO: load data from the server to have dynamic isAdmin based on data
     // const isAdmin = true;
-
     const [isAdmin] = useAdmin();
+    // const { setLoading } = useAuth();
 
     return (
         <div className="drawer lg:drawer-open">
@@ -40,6 +42,7 @@ const Dashboard = () => {
                     </div>
                     {/* Sidebar content here */}
 
+                    {/* {setLoading(false) || */}
                     {
                         isAdmin ? <>
                             <li><NavLink to="/dashboard/adminhome"><FaHome className="text-xl"></FaHome > Admin Home</NavLink></li>
@@ -69,6 +72,7 @@ const Dashboard = () => {
                     <li><NavLink to="/menu"><MdOutlineMenu className="text-xl"></MdOutlineMenu > Menu </NavLink></li>
                     <li><NavLink to="/order/salad"><FaShoppingBag className="text-xl"></FaShoppingBag > Shop </NavLink></li>
                     <li><NavLink to="/contact"><MdContacts className="text-xl"></MdContacts  > Contact </NavLink></li>
+                    <li><NavLink to="/login"><FiLogOut className="text-xl"></FiLogOut>LogOut</NavLink></li>
                 </ul>
 
             </div>
