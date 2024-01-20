@@ -5,7 +5,7 @@ import { FaUsers } from "react-icons/fa";
 import { IoFastFood } from "react-icons/io5";
 import { TbCardsFilled } from "react-icons/tb";
 import { IoMdCart } from "react-icons/io";
-import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, PieChart, Pie } from 'recharts';
+import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, PieChart, Pie, Legend } from 'recharts';
 
 
 const AdminHome = () => {
@@ -162,6 +162,7 @@ const AdminHome = () => {
 
                 <div >
                     <PieChart width={400} height={400}>
+                        <Legend></Legend>
                         <Pie
                             data={chartData}
                             cx="50%"
@@ -173,7 +174,7 @@ const AdminHome = () => {
                             dataKey="itemsCount"
                         >
                             {chartData.map((entry, index) => (
-                                <Cell key={`cell-${index}`} fill={colors[index % colors.length]} />
+                                <Cell name={entry?.category} key={`cell-${index}`} fill={colors[index % colors.length]} />
                             ))}
                         </Pie>
                     </PieChart>
