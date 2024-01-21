@@ -6,6 +6,8 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 
+
+
 // import Swiper from "swiper";
 // import ReactPaginate from "react-paginate";
 // import { Pagination, Navigation } from 'swiper/modules';
@@ -73,6 +75,7 @@ const OrderTabs = ({ items }) => {
                 }
 
             </div>
+
             {/* <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-4 my-10">
                 {
                     slides.map((item, index) => items.slice(index * itemsize, (index + 1) * itemsize) {

@@ -5,6 +5,7 @@ import useCart from "../../Hooks/useCart";
 import useAuth from "../../Hooks/useAuth";
 
 
+
 const FoodOrder = ({ item }) => {
     const { name, image, recipe, price, _id } = item;
     const { user } = useAuth();
@@ -72,6 +73,7 @@ const FoodOrder = ({ item }) => {
             </div>
 
         </div>
+
     );
 };
 
