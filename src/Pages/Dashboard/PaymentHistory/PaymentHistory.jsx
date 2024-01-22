@@ -5,13 +5,16 @@ import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 
 const PaymentHistory = () => {
-    const { user } = useAuth();
+    const { user, loading } = useAuth();
     const [axiosSecure] = useAxiosSecure();
 
     const { data: paymentData = [] } = useQuery({
         queryKey: ['payments', user?.email],
+        enabled: !loading,
         queryFn: async () => {
             const res = await axiosSecure(`/payments/${user?.email}`);
+            console.log(res.data);
+            console.log(res.data)
             return res.data;
         }
     })
@@ -30,7 +33,7 @@ const PaymentHistory = () => {
 
                 {/* payment body  */}
                 <div className="overflow-x-auto ">
-                    <table className="table">
+                    <table className="table text-center">
                         {/* head */}
                         <thead className="uppercase bg-[#D1A054] text-white">
                             <tr>
