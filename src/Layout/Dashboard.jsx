@@ -55,7 +55,7 @@ const Dashboard = () => {
                         </> : <>
 
                             <li><NavLink to="/dashboard/userhome"><FaHome className="text-xl"></FaHome > User Home</NavLink></li>
-                            <li><NavLink to="/dashboard/payment"><FaCalendarAlt className="text-xl"></FaCalendarAlt > Reservention</NavLink></li>
+                            <li><NavLink to="/dashboard/reservation"><FaCalendarAlt className="text-xl"></FaCalendarAlt > Reservention</NavLink></li>
                             <li><NavLink to="/dashboard/paymentHistory"><FaWallet className="text-xl"></FaWallet > Payment History</NavLink></li>
                             <li><NavLink to="/dashboard/mycart"><FaShoppingCart className="text-xl"></FaShoppingCart> My Cart  <span className="badge badge-success">+{cart?.length || 0}</span>
                             </NavLink></li>
