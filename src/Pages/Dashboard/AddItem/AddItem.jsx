@@ -13,6 +13,7 @@ const AddItem = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const img_hosting_url = `https://api.imgbb.com/1/upload?key=${img_hosting_key}`;
     const [axiosSecure] = useAxiosSecure();
+
     const onSubmit = data => {
         // console.log(data)
         const formData = new FormData();

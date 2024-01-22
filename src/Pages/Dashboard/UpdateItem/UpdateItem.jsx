@@ -74,12 +74,12 @@ const UpdateItem = () => {
                         </div>
                         <select defaultValue="Category" {...register("category", { required: true })} className="select select-bordered">
                             <option disabled >Category</option>
-                            <option>Pizza</option>
-                            <option>Soup</option>
-                            <option>Salad</option>
-                            <option>Dessert</option>
-                            <option>Drinks</option>
-                            <option>Desi</option>
+                            <option value='pizza'>Pizza</option>
+                            <option value='soup'>Soup</option>
+                            <option value='salad'>Salad</option>
+                            <option value='dessert'>Dessert</option>
+                            <option value='drinks'>Drinks</option>
+                            <option value='desi'>Desi</option>
                         </select>
 
                     </label>

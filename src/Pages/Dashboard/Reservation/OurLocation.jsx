@@ -4,7 +4,7 @@ import { IoTime } from "react-icons/io5";
 
 const OurLocation = () => {
     return (
-        <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-3 text-center">
+        <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-3 text-center mb-5">
             <div className="">
                 <div className="bg-[#D1A054] py-3">
                     <h2 className="flex justify-center text-2xl text-white">
