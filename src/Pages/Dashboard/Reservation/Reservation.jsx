@@ -11,7 +11,7 @@ const Reservation = () => {
     const [axiosSecure] = useAxiosSecure();
 
     const onSubmit = async (data) => {
-        console.log(data)
+        // console.log(data)
         const booking = {
             bookingDate: data.bookingDate,
             bookingTime: data.bookingTime,
@@ -22,7 +22,7 @@ const Reservation = () => {
         }
         const bookingData = await axiosSecure.post('/bookings', booking)
 
-        console.log('after posting booking a table', bookingData);
+        // console.log('after posting booking a table', bookingData);
         if (bookingData.data.insertedId) {
             reset();
             Swal.fire({
@@ -34,8 +34,8 @@ const Reservation = () => {
             });
         }
 
+        console.log(errors)
     }
-    console.log(errors)
 
     return (
         <>

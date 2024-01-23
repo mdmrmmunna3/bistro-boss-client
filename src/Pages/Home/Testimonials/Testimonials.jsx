@@ -2,7 +2,7 @@ import HeadingTitel from "../../../components/HeadingTitel/HeadingTitel";
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Rating } from '@smastrom/react-rating'
-
+import { Pagination, Autoplay } from 'swiper/modules';
 import '@smastrom/react-rating/style.css'
 
 // Import Swiper styles
@@ -33,7 +33,11 @@ const Testimonials = () => {
             <Swiper
                 cssMode={true}
                 navigation={true}
-                modules={[Navigation]}
+                autoplay={{ delay: 2000, disableOnInteraction: false }}
+                pagination={{
+                    clickable: true,
+                }}
+                modules={[Navigation, Autoplay, Pagination]}
                 className="mySwiper"
             >
 
