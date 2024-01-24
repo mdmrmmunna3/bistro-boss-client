@@ -21,16 +21,18 @@ const Dashboard = () => {
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
             <div className="drawer-content flex flex-col items-center ">
                 {/* Page content here */}
-                <Outlet></Outlet>
-                <label htmlFor="my-drawer-2" className="btn drawer-button lg:hidden "> Open
-                    <img src={drawerImg}
-                        style={
-                            {
-                                width: '30px'
+                <div className="">
+                    <label htmlFor="my-drawer-2" className="btn drawer-button lg:hidden">
+                        <img src={drawerImg}
+                            style={
+                                {
+                                    width: '30px'
+                                }
                             }
-                        }
-                    />
-                </label>
+                        />
+                    </label>
+                </div>
+                <Outlet></Outlet>
 
             </div>
             <div className="drawer-side">
@@ -48,7 +50,7 @@ const Dashboard = () => {
                             <li><NavLink to="/dashboard/adminhome"><FaHome className="text-xl"></FaHome > Admin Home</NavLink></li>
                             <li><NavLink to="/dashboard/addItem"><FaUtensils className="text-xl"></ FaUtensils> Add Items </NavLink></li>
                             <li><NavLink to="/dashboard/manageItems"><FaWallet className="text-xl"></FaWallet > Manage Items</NavLink></li>
-                            <li><NavLink to="/dashboard/"><FaBook className="text-xl"></FaBook> Manage Bookings
+                            <li><NavLink to="/dashboard/allBookings"><FaBook className="text-xl"></FaBook> Manage Bookings
                             </NavLink></li>
                             <li><NavLink to="/dashboard/allUsers"><FaUsers className="text-xl"></FaUsers> All Users</NavLink></li>
 

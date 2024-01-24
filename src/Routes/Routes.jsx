@@ -21,6 +21,7 @@ import PaymentHistory from "../Pages/Dashboard/PaymentHistory/PaymentHistory";
 import Reservation from "../Pages/Dashboard/Reservation/Reservation";
 import AddReview from "../Pages/Dashboard/AddReview/AddReview";
 import MyBooking from "../Pages/Dashboard/MyBooking/MyBooking";
+import AllBookings from "../Pages/Dashboard/AllBookings/AllBookings";
 
 
 export const router = createBrowserRouter([
@@ -113,6 +114,10 @@ export const router = createBrowserRouter([
                 path: "updateItem/:id",
                 element: <AdminRoute><UpdateItem></UpdateItem></AdminRoute>,
                 loader: ({ params }) => fetch(`http://localhost:5000/menu/${params.id}`)
+            },
+            {
+                path: "allBookings",
+                element: <AdminRoute><AllBookings></AllBookings></AdminRoute>
             }
         ]
     }
