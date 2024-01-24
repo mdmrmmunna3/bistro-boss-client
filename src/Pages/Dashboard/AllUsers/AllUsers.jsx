@@ -85,12 +85,9 @@ const AllUsers = () => {
         }).then((result) => {
             if (result.isConfirmed) {
 
-                fetch(`http://localhost:5000/users/${user._id}`, {
-                    method: 'DELETE'
-                })
-                    .then(res => res.json())
-                    .then(data => {
-                        if (data.deletedCount > 0) {
+                axiosSecure.delete(`/users/${user?._id}`)
+                    .then(res => {
+                        if (res.data.deletedCount > 0) {
                             refetch();
                             Swal.fire({
                                 title: "Deleted!",
@@ -103,6 +100,28 @@ const AllUsers = () => {
 
             }
         });
+
+        // .then((result) => {
+        //     if (result.isConfirmed) {
+
+        //         fetch(`http://localhost:5000/users/${user?._id}`, {
+        //             method: 'DELETE'
+        //         })
+        //             .then(res => res.json())
+        //             .then(data => {
+        //                 if (data.deletedCount > 0) {
+        //                     refetch();
+        //                     Swal.fire({
+        //                         title: "Deleted!",
+        //                         text: "User has been deleted.",
+        //                         icon: "success"
+        //                     });
+        //                 }
+        //             })
+
+
+        //     }
+        // });
     }
 
     return (

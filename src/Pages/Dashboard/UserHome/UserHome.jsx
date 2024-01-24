@@ -5,6 +5,7 @@ import { BsShop } from "react-icons/bs";
 import { BiSolidPhoneCall } from "react-icons/bi";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import profilePic from "../../../assets/others/profile.png"
 
 
 const UserHome = () => {
@@ -88,6 +89,37 @@ const UserHome = () => {
                         </div>
                     </div>
 
+                </div>
+
+                {/* profile part  */}
+                <div className="grid md:grid-cols-2 mb-6">
+                    {/* profile img  */}
+                    <div className="flex flex-col justify-center items-center w-full py-16 px-28 bg-[#FFEDD5] hover:bg-[#BB34F5] border-2 md:border-r-[#D1A054] md:border-b-0 border-b-[#D1A054] hover:text-white duration-700 ease-in-out">
+                        <div className="avatar online mb-6">
+                            <div className="w-24 rounded-full ring ring-[#D1A054] ring-offset-base-100 ring-offset-1">
+                                {
+                                    user?.photoURL ? <img src={user?.photoURL} alt="" /> : <img src={profilePic} />
+                                }
+                            </div>
+                        </div>
+                        <div>
+                            <h2 className="text-2xl font-normal uppercase tracking-[2px]">{user?.displayName}</h2>
+                        </div>
+                    </div>
+
+                    {/* activites part  */}
+                    <div className="flex flex-col justify-center items-center w-full py-16 px-28 bg-[#FEF9C3] hover:bg-[#FE4880]  hover:text-white duration-700 ease-in-out">
+                        <div className="">
+                            <h2 className="md:text-2xl text-lg font-normal uppercase tracking-[2px] mb-5">Your Activites</h2>
+                            <div>
+                                <h3><span></span>{userStats?.cart?.length}</h3>
+                                <h3><span></span>{userStats?.getBookings?.length}</h3>
+                                <h3><span></span>{userStats?.getReviews?.length}</h3>
+                                <h3><span></span>{userStats?.getPayments?.length}</h3>
+
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </>
