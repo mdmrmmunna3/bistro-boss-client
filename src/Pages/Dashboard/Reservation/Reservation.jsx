@@ -5,10 +5,12 @@ import { useForm } from "react-hook-form";
 import { MdOutlineEventNote } from "react-icons/md";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import Swal from "sweetalert2";
+import useAuth from "../../../Hooks/useAuth";
 
 const Reservation = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const [axiosSecure] = useAxiosSecure();
+    const { user } = useAuth();
 
     const onSubmit = async (data) => {
         // console.log(data)
@@ -99,7 +101,7 @@ const Reservation = () => {
                             <div className="label">
                                 <span className="label-text font-semibold">Email*</span>
                             </div>
-                            <input type="email" placeholder="Your Email"
+                            <input defaultValue={user?.email} disabled type="email" placeholder="Your Email"
                                 {...register("email", { required: true, maxLength: 120 })}
                                 className="input input-bordered w-full" />
 
