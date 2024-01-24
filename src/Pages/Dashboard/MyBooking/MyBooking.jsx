@@ -4,13 +4,14 @@ import { useQuery } from "@tanstack/react-query";
 import useAuth from "../../../Hooks/useAuth";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import { FaRegTrashAlt } from "react-icons/fa";
+import Swal from "sweetalert2";
 
 
 const MyBooking = () => {
     const { user, loading } = useAuth();
     const [axiosSecure] = useAxiosSecure();
 
-    const { data: booking = [] } = useQuery({
+    const { data: booking = [], refetch } = useQuery({
         queryKey: ['bookings', user?.email],
         enabled: !loading,
         queryFn: async () => {
@@ -21,7 +22,32 @@ const MyBooking = () => {
     })
 
     const handleDelete = data => {
-        console.log(data)
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+
+                axiosSecure.delete(`/bookings/${data?._id}`)
+                    .then(res => {
+                        if (res.data.deletedCount > 0) {
+                            refetch();
+                            Swal.fire({
+                                title: "Deleted!",
+                                text: "Your booking has been deleted.",
+                                icon: "success"
+                            });
+                        }
+                    })
+
+
+            }
+        });
     }
     return (
         <>
