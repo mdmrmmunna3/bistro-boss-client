@@ -1,6 +1,6 @@
 import { Helmet } from "react-helmet-async";
 import HeadingTitel from "../../../components/HeadingTitel/HeadingTitel";
-import rocketImg from '../../../assets/icon/shuttle 1.png'
+import { MdRocketLaunch } from "react-icons/md";
 import useAuth from "../../../Hooks/useAuth";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
@@ -28,6 +28,7 @@ const AddReview = () => {
         data.rating = rating;
         const review = {
             name: data.name,
+            email: data.email,
             likedRecipe: data.likedRecipe,
             suggestion: data.suggestion,
             details: data.details,
@@ -87,6 +88,16 @@ const AddReview = () => {
 
                     <label className="form-control w-full ">
                         <div className="label">
+                            <span className="label-text font-semibold">Email*</span>
+                        </div>
+                        <input type="text" placeholder="Your Name" defaultValue={user?.email} className="input w-full "
+                            {...register("email", { required: true, maxLength: 120 })}
+                        />
+
+                    </label>
+
+                    <label className="form-control w-full ">
+                        <div className="label">
                             <span className="label-text font-semibold">Which recipe you liked most?</span>
                         </div>
                         <input type="text" placeholder="Recipe you liked most" className="input w-full "
@@ -128,7 +139,7 @@ const AddReview = () => {
 
                             />
                             <span className="absolute left-[150px] text-white">
-                                <img src={rocketImg} className="w-6" alt="" />
+                                <MdRocketLaunch />
                             </span>
                         </div>
                     </div>

@@ -23,9 +23,11 @@ const useCart = () => {
 
         // another way!
         queryFn: async () => {
-            const res = await axiosSecure.get(`/carts?email=${user?.email}`);
-            // console.log('res from axios', res);
-            return res.data;
+            if (user?.email) {
+                const res = await axiosSecure.get(`/carts?email=${user?.email}`);
+                // console.log('res from axios', res);
+                return res.data;
+            }
         },
     })
     return [cart, refetch]

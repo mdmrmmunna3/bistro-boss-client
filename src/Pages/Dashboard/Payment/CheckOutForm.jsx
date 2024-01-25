@@ -84,7 +84,7 @@ const CheckOutForm = ({ cart, refetch, price }) => {
                 price,
                 date: new Date(),
                 quantity: cart.length,
-                status: 'service pending',
+                status: paymentIntent.status,
                 cartsItemsId: cart.map(item => item?._id),
                 menuItemsId: cart.map(item => item?.menuItemId),
                 itemsName: cart.map(item => item?.name),
@@ -105,7 +105,6 @@ const CheckOutForm = ({ cart, refetch, price }) => {
                         navigate('/dashboard/paymentHistory');
                     }
                 })
-
         }
     }
     return (

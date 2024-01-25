@@ -22,6 +22,7 @@ import Reservation from "../Pages/Dashboard/Reservation/Reservation";
 import AddReview from "../Pages/Dashboard/AddReview/AddReview";
 import MyBooking from "../Pages/Dashboard/MyBooking/MyBooking";
 import AllBookings from "../Pages/Dashboard/AllBookings/AllBookings";
+import ContactUs from "../Pages/ContactUs/ContactUs";
 
 
 export const router = createBrowserRouter([
@@ -40,6 +41,10 @@ export const router = createBrowserRouter([
             {
                 path: "order/:category",
                 element: <Order></Order>
+            },
+            {
+                path: "contactUs",
+                element: <PrivateRoute> <ContactUs></ContactUs></PrivateRoute>
             },
             {
                 path: "login",

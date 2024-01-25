@@ -73,7 +73,7 @@ const Dashboard = () => {
                     <li><NavLink to="/"><FaHome className="text-xl"></FaHome > Home </NavLink></li>
                     <li><NavLink to="/menu"><MdOutlineMenu className="text-xl"></MdOutlineMenu > Menu </NavLink></li>
                     <li><NavLink to="/order/salad"><FaShoppingBag className="text-xl"></FaShoppingBag > Shop </NavLink></li>
-                    <li><NavLink to="/contact"><MdContacts className="text-xl"></MdContacts  > Contact </NavLink></li>
+                    <li><NavLink to="/contactUs"><MdContacts className="text-xl"></MdContacts  > Contact </NavLink></li>
                     <li><NavLink to="/login"><FiLogOut className="text-xl"></FiLogOut>LogOut</NavLink></li>
                 </ul>
 

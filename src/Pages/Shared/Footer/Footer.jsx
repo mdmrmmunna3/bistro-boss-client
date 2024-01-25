@@ -33,7 +33,7 @@ const Footer = () => {
             {/* <div className="footer footer-center p-4 bg-base-300 text-base-content">
             </div> */}
             <aside className="text-center py-3 bg-black text-white">
-                <p onMouseEnter={getYear}>Copyright &copy; <span id="current_year"></span> CulinaryCloud.All rights Reserved</p>
+                <p onMouseEnter={getYear}>Copyright &copy; <span id="current_year"></span> Bistro-Boss.All rights Reserved</p>
             </aside>
 
         </footer>

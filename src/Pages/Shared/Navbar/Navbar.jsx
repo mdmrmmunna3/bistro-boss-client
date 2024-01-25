@@ -22,7 +22,7 @@ const Navbar = () => {
 
     const navOptions = <>
         <li><NavLink to="/" className={({ isActive }) => isActive ? 'active' : undefined} style={{ textTransform: 'uppercase', fontSize: "12px" }} >Home</NavLink></li>
-        <li><NavLink to="/contact" className="text-xs uppercase">Contact us</NavLink></li>
+        <li><NavLink to="/contactUs" className="text-xs uppercase">Contact us</NavLink></li>
         {/* <li><NavLink to={isAdmin ? '/dashboard/adminhome' : '/dashboard/userhome'} className="text-xs uppercase">Dashboard</NavLink></li>  */}
         {
             user && isAdmin && <li><NavLink to='/dashboard/adminhome' className="text-xs uppercase">Dashboard</NavLink></li>
