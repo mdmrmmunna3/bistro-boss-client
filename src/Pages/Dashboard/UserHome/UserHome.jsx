@@ -86,7 +86,11 @@ const UserHome = () => {
                         className="stats-main flex flex-row items-center justify-center gap-x-3 rounded-lg shadow-lg ">
                         <div ><BiSolidPhoneCall className="text-3xl text-white"></BiSolidPhoneCall></div>
                         <div className="right-stat">
-                            <div className="lg:text-2xl text-xl text-white font-semibold"></div>
+                            <div className="lg:text-2xl text-xl text-white font-semibold">
+                                {
+                                    userStats?.getContacts?.length ? userStats?.getContacts?.length : 0
+                                }
+                            </div>
                             <div className="text-white font-semibold font-sans lg:text-2xl text-xl">Contact</div>
                         </div>
                     </div>
