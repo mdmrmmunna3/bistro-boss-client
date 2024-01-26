@@ -79,8 +79,8 @@ const Navbar = () => {
                         </ul>
                     </div>
                     <Link to="/" className="uppercase block text-justify">
-                        <p className="text-xl">Bistro Boss</p>
-                        <p className="" style={{ letterSpacing: '3px' }}>Restaurant</p>
+                        <h3 className="text-xl">Bistro Boss</h3>
+                        <h3 className="" style={{ letterSpacing: '3px' }}>Restaurant</h3>
                     </Link>
                 </div >
                 <div className="navbar-end hidden lg:flex items-center">

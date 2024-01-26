@@ -116,7 +116,7 @@ const UserHome = () => {
                     {/* activites part  */}
                     <div className="flex flex-col justify-center items-center w-full py-16 px-28 bg-[#FEF9C3] hover:bg-[#fdfdfd]  hover:text-green-500 duration-700 ease-in-out">
                         <div className="">
-                            <h2 className="md:text-2xl text-lg font-normal uppercase tracking-[2px] mb-5">Your Activites</h2>
+                            <h2 className="md:text-xl text-lg font-normal uppercase tracking-[2px] mb-5">Your Activites</h2>
                             <div>
                                 <div className="flex items-center font-medium text-[#0088FE]"><span className="mr-2"><FaShoppingCart /></span>Orders: {userStats?.cart?.length}</div>
                                 <div className="flex items-center font-medium text-[#FFBB28]"><span className="mr-2"><FaStar /></span>Bookings: {userStats?.getBookings?.length}</div>

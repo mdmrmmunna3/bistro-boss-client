@@ -36,23 +36,23 @@ const Category = () => {
                 >
                     <SwiperSlide>
                         <img src={slider1} alt="" />
-                        <h3 className='text-center uppercase lg:text-3xl md:text-2xl text-xs text-white -mt-16'>Salads</h3>
+                        <h3 className='text-center uppercase lg:text-2xl md:text-xl text-xs text-white -mt-16'>Salads</h3>
                     </SwiperSlide>
                     <SwiperSlide>
                         <img src={slider2} alt="" />
-                        <h3 className='text-center uppercase lg:text-3xl md:text-2xl text-xs text-white -mt-16'>Pizza</h3>
+                        <h3 className='text-center uppercase lg:text-2xl md:text-xl text-xs text-white -mt-16'>Pizza</h3>
                     </SwiperSlide>
                     <SwiperSlide>
                         <img src={slider3} alt="" />
-                        <h3 className='text-center uppercase lg:text-3xl md:text-2xl text-xs text-white -mt-16'>Soups</h3>
+                        <h3 className='text-center uppercase lg:text-2xl md:text-xl text-xs text-white -mt-16'>Soups</h3>
                     </SwiperSlide>
                     <SwiperSlide>
                         <img src={slider4} alt="" />
-                        <h3 className='text-center uppercase lg:text-3xl md:text-2xl text-xs text-white -mt-16'>Desserts</h3>
+                        <h3 className='text-center uppercase lg:text-2xl md:text-xl text-xs text-white -mt-16'>Desserts</h3>
                     </SwiperSlide>
                     <SwiperSlide>
                         <img src={slider5} alt="" />
-                        <h3 className='text-center uppercase lg:text-3xl md:text-2xl text-xs text-white -mt-16'>Salads</h3>
+                        <h3 className='text-center uppercase lg:text-2xl md:text-xl text-xs text-white -mt-16'>Salads</h3>
                     </SwiperSlide>
 
                 </Swiper>

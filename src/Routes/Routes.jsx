@@ -23,12 +23,14 @@ import AddReview from "../Pages/Dashboard/AddReview/AddReview";
 import MyBooking from "../Pages/Dashboard/MyBooking/MyBooking";
 import AllBookings from "../Pages/Dashboard/AllBookings/AllBookings";
 import ContactUs from "../Pages/ContactUs/ContactUs";
+import ErrorPage from "../Pages/Shared/ErrorPage/ErrorPage";
 
 
 export const router = createBrowserRouter([
     {
         path: "/",
         element: <Main></Main>,
+        errorElement: <ErrorPage></ErrorPage>,
         children: [
             {
                 path: "/",
@@ -64,6 +66,7 @@ export const router = createBrowserRouter([
     {
         path: "dashboard",
         element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
+        errorElement: <ErrorPage></ErrorPage>,
         children: [
             {
                 path: 'userhome',
