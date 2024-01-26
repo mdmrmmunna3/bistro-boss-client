@@ -6,6 +6,8 @@ import './Navbar.css'
 import useCart from "../../../Hooks/useCart";
 import useAuth from "../../../Hooks/useAuth";
 import useAdmin from "../../../Hooks/useAdmin";
+import profilePic from "../../../assets/others/profile.png"
+
 const Navbar = () => {
 
     const { user, logOut } = useAuth();
@@ -34,7 +36,7 @@ const Navbar = () => {
         <li><NavLink to="/menu" className="text-xs  uppercase">Our menu</NavLink></li>
         <li><NavLink to="/order/salad" className="text-xs  uppercase">Our Shop</NavLink></li>
 
-        {user && <li><NavLink to="/dashboard/mycart" className="text-xs  uppercase">
+        {user && <li className="pt-1"><NavLink to="/dashboard/mycart" className="text-xs  uppercase">
             <button className="flex items-center justify-center">
                 <TiShoppingCart className="text-xl" />
                 <div className="badge badge-success">+{cart?.length || 0}</div>
@@ -52,17 +54,27 @@ const Navbar = () => {
                 <li><Link to="/login" className="text-xs uppercase">LogIn</Link></li>
             </>
         }
+
+        <div title={user?.displayName} className="btn btn-ghost btn-circle avatar flex items-start">
+            <div className=" w-8 rounded-full pt-0 dropdown">
+                {
+                    user?.photoURL ? <img alt="" src={user?.photoURL} /> : <img alt="" src={profilePic} />
+                }
+            </div>
+        </div>
+
+
     </>
 
     return (
         <>
-            <div className="navbar fixed z-10 opacity-60 font-semibold text-white bg-black max-w-screen-xl">
+            <div className="navbar fixed z-10 opacity-90 font-semibold text-white bg-black max-w-screen-xl">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <label tabIndex={0} className="btn btn-ghost lg:hidden">
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                         </label>
-                        <ul tabIndex={0} className="gap-5  menu-sm dropdown-content mt-3 z-[1] p-2 shadow-xl bg-emerald-700 rounded-box w-96">
+                        <ul tabIndex={0} className="gap-5  menu-sm dropdown-content mt-3 z-[1] p-2 shadow-xl bg-white text-black rounded-box w-96">
                             {navOptions}
                         </ul>
                     </div>
@@ -71,8 +83,8 @@ const Navbar = () => {
                         <p className="" style={{ letterSpacing: '3px' }}>Restaurant</p>
                     </Link>
                 </div >
-                <div className="navbar-end hidden lg:flex">
-                    <ul className="gap-5  menu-horizontal px-1">
+                <div className="navbar-end hidden lg:flex items-center">
+                    <ul className="gap-5  menu-horizontal px-1 pt-5">
                         {navOptions}
                     </ul>
                 </div>
