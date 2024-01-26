@@ -6,6 +6,7 @@ import { Helmet } from 'react-helmet-async';
 import Swal from 'sweetalert2';
 import SocialLogin from '../../components/SocialLogin/SocialLogin';
 import useAuth from '../../Hooks/useAuth';
+import authPic from "../../assets/others/authentication.gif"
 
 const Login = () => {
     const [disabled, setDisabled] = useState(true);
@@ -81,13 +82,17 @@ const Login = () => {
             <Helmet>
                 <title>Bistro Boss || Login</title>
             </Helmet>
-            <div className="hero min-h-screen bg-base-200">
+            <div className="hero min-h-screen">
                 <div className="hero-content flex-col lg:flex-row-reverse">
                     <div className="text-center md:w-1/2 lg:text-left">
-                        <h1 className="text-5xl font-bold">Login now!</h1>
-                        <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+                        <img src={authPic} alt="" />
                     </div>
-                    <div className="card md:w-1/2 max-w-sm shadow-2xl bg-base-100">
+                    <div
+                        style={{
+                            boxShadow: `rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset`
+                        }}
+                        className="card md:w-1/2 max-w-sm bg-base-100">
+                        <h1 className="text-3xl text-center mt-2 font-bold">Login now!</h1>
                         <form onSubmit={handelLogin} className="card-body">
                             <div className="form-control">
                                 <label className="label">
@@ -117,7 +122,7 @@ const Login = () => {
                             </div>
                             {/* TODO: make button disabled for captcha */}
                             <div className="form-control mt-6">
-                                <input disabled={false} className="btn btn-primary" type="submit" value="login" />
+                                <input disabled={disabled} className="btn btn-primary" type="submit" value="login" />
                             </div>
                         </form>
                         <p className='text-center mb-2'><small>New Here? <Link to="/signUp" className='text-yellow-500'>Create a New Account</Link> </small></p>

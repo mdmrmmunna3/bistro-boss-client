@@ -6,7 +6,7 @@ import { Helmet } from "react-helmet-async";
 import Swal from "sweetalert2";
 import SocialLogin from "../../components/SocialLogin/SocialLogin";
 import useAuth from "../../Hooks/useAuth";
-
+import authPic from "../../assets/others/authentication.gif"
 
 const SignUp = () => {
     const {
@@ -84,13 +84,17 @@ const SignUp = () => {
             <Helmet>
                 <title>Bistro Boss | Sign Up</title>
             </Helmet>
-            <div className="hero min-h-screen bg-base-200">
+            <div className="hero min-h-screen ">
                 <div className="hero-content flex-col lg:flex-row-reverse">
                     <div className="text-center md:w-1/2 lg:text-left">
-                        <h1 className="text-5xl font-bold">SignUp now!</h1>
-                        <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+                        <img src={authPic} alt="" />
                     </div>
-                    <div className="card flex-shrink-0 md:w-1/2 w-full max-w-sm shadow-2xl bg-base-100">
+                    <div
+                        style={{
+                            boxShadow: `rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset`
+                        }}
+                        className="card flex-shrink-0 md:w-1/2 w-full max-w-sm bg-base-100">
+                        <h1 className="text-3xl mt-2 text-center font-bold">SignUp now!</h1>
                         <form onSubmit={handleSubmit(onSubmit)} className="card-body">
                             <div className="form-control">
                                 <label className="label">

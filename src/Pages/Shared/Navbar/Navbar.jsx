@@ -34,7 +34,7 @@ const Navbar = () => {
         }
 
         <li><NavLink to="/menu" className="text-xs  uppercase">Our menu</NavLink></li>
-        <li><NavLink to="/order/salad" className="text-xs  uppercase">Our Shop</NavLink></li>
+        <li><NavLink to="/order/salad" className="text-xs  uppercase">Order Food</NavLink></li>
 
         {user && <li className="pt-1"><NavLink to="/dashboard/mycart" className="text-xs  uppercase">
             <button className="flex items-center justify-center">
