@@ -4,10 +4,14 @@ import { FaRegTrashAlt, FaUserShield } from "react-icons/fa";
 import HeadingTitel from "../../../components/HeadingTitel/HeadingTitel";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import { useState } from "react";
+import useAdmin from "../../../Hooks/useAdmin";
 
 
 const AllUsers = () => {
     const [axiosSecure] = useAxiosSecure();
+    const [isAdmin] = useAdmin();
+    const [isDisabled, setIsDisabled] = useState(isAdmin);
 
     // this query function related tanstack query/react query version 3 
     //  const { data: users = [], refetch } = useQuery(['users'], async () => {
@@ -58,6 +62,7 @@ const AllUsers = () => {
                 })
                     .then(res => res.json())
                     .then(data => {
+
                         if (data.modifiedCount) {
                             refetch();
                             Swal.fire({
@@ -165,7 +170,11 @@ const AllUsers = () => {
                                     }
                                 </td>
                                 <td>
-                                    <button onClick={() => handleDelete(user)} className="btn btn-ghost bg-red-600 text-white btn-sm"><FaRegTrashAlt ></FaRegTrashAlt></button>
+                                    {
+                                        user?.role === 'admin' ? <button disabled={isDisabled} onClick={() => handleDelete(user)} className="btn btn-ghost bg-red-600 text-white btn-sm"><FaRegTrashAlt ></FaRegTrashAlt></button>
+                                            :
+                                            <button onClick={() => handleDelete(user)} className="btn btn-ghost bg-red-600 text-white btn-sm"><FaRegTrashAlt ></FaRegTrashAlt></button>
+                                    }
                                 </td>
                             </tr>)
                         }

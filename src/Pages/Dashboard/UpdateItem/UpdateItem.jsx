@@ -4,6 +4,7 @@ import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 // import useMenu from "../../../Hooks/useMenu";
 import Swal from "sweetalert2";
 import { useLoaderData } from "react-router-dom";
+import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 // import useMenu from "../../../Hooks/useMenu";
 
 
@@ -12,6 +13,7 @@ const UpdateItem = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const img_hosting_url = `https://api.imgbb.com/1/upload?key=${img_hosting_key}`;
     const [axiosSecure] = useAxiosSecure();
+    const axiosPublic = useAxiosPublic();
     const { _id } = useLoaderData();
     // const [menu, , refetch] = useMenu();
     // const { _id } = menu;
@@ -21,34 +23,65 @@ const UpdateItem = () => {
         const formData = new FormData();
         formData.append('image', data.image[0]);
 
-        fetch(img_hosting_url, {
-            method: 'POST',
-            body: formData
-        })
-            .then(res => res.json())
-            .then(imgResponse => {
-                console.log(imgResponse)
-                if (imgResponse.success) {
-                    const imgURL = imgResponse.data.display_url;
-                    const { name, price, category, recipe } = data;
-                    // console.log(data)
-                    const menuItem = { name, price: parseFloat(price), category, recipe, image: imgURL }
-                    console.log(menuItem);
+        const res = await axiosPublic.post(img_hosting_url, formData , {
+            headers: {
+                'content-type': 'multipart/form-data'
+            }
+        });
 
-                    const menuRes = axiosSecure.patch(`/menu/${_id}`, menuItem);
-                    console.log(menuRes)
-                    if (menuItem) {
-                        // reset()
-                        Swal.fire({
-                            position: "center",
-                            icon: "success",
-                            title: `${data?.name} is updated to the menu.`,
-                            showConfirmButton: false,
-                            timer: 1500
-                        });
-                    }
-                }
-            })
+        if(res.data.success){
+            const menuItem = {
+                name: data.name,
+                category: data.category,
+                price: parseFloat(data.price),
+                recipe: data.recipe,
+                image: res.data.data.display_url
+            }
+            const menuRes = await axiosSecure.patch(`/menu/${_id}`, menuItem)
+            console.log(menuRes.data)
+            if (menuRes?.data?.modifiedCount > 0){
+                Swal.fire({
+                                            position: "center",
+                                            icon: "success",
+                                            title: `${data?.name} is updated to the menu.`,
+                                            showConfirmButton: false,
+                                            timer: 1500
+                                        });
+            }
+        }
+
+        // fetch(img_hosting_url, {
+        //     method: 'POST',
+        //     body: formData
+        // })
+        //     .then(res => res.json())
+        //     .then(imgResponse => {
+        //         // console.log(imgResponse)
+        //         if (imgResponse.success) {
+        //             const imgURL = imgResponse.data.display_url;
+        //             const { name, price, category, recipe } = data;
+        //             // console.log(data)
+        //             const menuItem = { name, price: parseFloat(price), category, recipe, image: imgURL }
+        //             // console.log(menuItem);
+
+        //             axiosSecure.patch(`/menu/${_id}`, menuItem)
+        //             .then(data => {
+        //                 console.log(data.data)
+        //                 if (data?.data?.modifiedCount > 0) {
+        //                     console.log('after update',data.data.modifiedCount)
+        //                     // reset()
+        //                     Swal.fire({
+        //                         position: "center",
+        //                         icon: "success",
+        //                         title: `${data?.name} is updated to the menu.`,
+        //                         showConfirmButton: false,
+        //                         timer: 1500
+        //                     });
+        //                 }
+        //             })
+                    
+        //         }
+        //     })
 
         console.log(errors);
     }

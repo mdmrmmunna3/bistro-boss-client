@@ -4,6 +4,7 @@ import { ImSpoonKnife } from "react-icons/im";
 import { useForm } from 'react-hook-form';
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import Swal from "sweetalert2";
+import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 // import useAxiosSecure from './useAxiosSecure';
 
 
@@ -13,29 +14,31 @@ const AddItem = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const img_hosting_url = `https://api.imgbb.com/1/upload?key=${img_hosting_key}`;
     const [axiosSecure] = useAxiosSecure();
+    const axiosPublic = useAxiosPublic();
 
-    const onSubmit = data => {
+    const onSubmit = async (data) => {
         // console.log(data)
         const formData = new FormData();
         formData.append('image', data.image[0]);
 
-        fetch(img_hosting_url, {
-            method: 'POST',
-            body: formData
-        })
-            .then(res => res.json())
-            .then(imgResponse => {
-                if (imgResponse.success) {
-                    const imgURL = imgResponse.data.display_url;
-                    const { name, price, category, recipe } = data;
-                    const newItem = { name, price: parseFloat(price), category, recipe, image: imgURL }
-                    // console.log(newItem);
+        const res = await axiosPublic.post(img_hosting_url, formData , {
+            headers: {
+                'content-type': 'multipart/form-data'
+            }
+        });
 
-                    axiosSecure.post('/menu', newItem)
-                        .then(data => {
-                            // console.log('after posting menu Item', data.data);
-                            if (data.data.insertedId) {
-                                reset()
+        if(res.data.success) {
+            const newItem = {
+                name: data.name,
+                category: data.category,
+                price: parseFloat(data.price),
+                recipe: data.recipe,
+                image: res.data.data.display_url
+            }
+            const menuRes = await axiosSecure.post('/menu', newItem)
+            console.log(menuRes.data)
+            if(menuRes.data.insertedId) {
+                reset()
                                 Swal.fire({
                                     position: "center",
                                     icon: "success",
@@ -43,10 +46,40 @@ const AddItem = () => {
                                     showConfirmButton: false,
                                     timer: 1500
                                 });
-                            }
-                        })
-                }
-            })
+            }
+        }
+
+         // using fetch and axios  
+
+        // fetch(img_hosting_url, {
+        //     method: 'POST',
+        //     body: formData
+        // })
+    //         .then(res => res.json())
+    //         .then(imgResponse => {
+    //             if (imgResponse.success) {
+    //                 const imgURL = imgResponse.data.display_url;
+    //                 const { name, price, category, recipe } = data;
+    //                 const newItem = { name, price: parseFloat(price), category, recipe, image: imgURL }
+    //                 // console.log(newItem);
+
+    //                 axiosSecure.post('/menu', newItem)
+    //                     .then(data => {
+    //                         console.log('after posting menu Item', data.data);
+    //                         if (data.data.insertedId) {
+    //                             reset()
+    //                             Swal.fire({
+    //                                 position: "center",
+    //                                 icon: "success",
+    //                                 title: "Item added successfully",
+    //                                 showConfirmButton: false,
+    //                                 timer: 1500
+    //                             });
+    //                         }
+    //                     })
+    //             }
+    //         })
+
     };
     console.log(errors);
 
