@@ -24,7 +24,10 @@ const Navbar = () => {
 
     const navOptions = <>
         <li><NavLink to="/" className={({ isActive }) => isActive ? 'active' : undefined} style={{ textTransform: 'uppercase', fontSize: "12px" }} >Home</NavLink></li>
-        <li><NavLink to="/contactUs" className="text-xs uppercase">Contact us</NavLink></li>
+
+        <li><NavLink to="/menu" className="text-xs  uppercase">Our menu</NavLink></li>
+        <li><NavLink to="/order/salad" className="text-xs  uppercase">Order Food</NavLink></li>
+
         {/* <li><NavLink to={isAdmin ? '/dashboard/adminhome' : '/dashboard/userhome'} className="text-xs uppercase">Dashboard</NavLink></li>  */}
         {
             user && isAdmin && <li><NavLink to='/dashboard/adminhome' className="text-xs uppercase">Dashboard</NavLink></li>
@@ -33,8 +36,7 @@ const Navbar = () => {
             user && !isAdmin && <li><NavLink to='/dashboard/userhome' className="text-xs uppercase">Dashboard</NavLink></li>
         }
 
-        <li><NavLink to="/menu" className="text-xs  uppercase">Our menu</NavLink></li>
-        <li><NavLink to="/order/salad" className="text-xs  uppercase">Order Food</NavLink></li>
+        <li><NavLink to="/contactUs" className="text-xs uppercase">Contact us</NavLink></li>
 
         {user && <li className="pt-1"><NavLink to="/dashboard/mycart" className="text-xs  uppercase">
             <button className="flex items-center justify-center">
@@ -55,13 +57,13 @@ const Navbar = () => {
             </>
         }
 
-        <div title={user?.displayName} className="btn btn-ghost btn-circle avatar flex items-start">
+        <NavLink to="/dashboard/userHome" title={user?.displayName} className="btn btn-ghost btn-circle avatar flex items-start">
             <div className=" w-8 rounded-full pt-0 dropdown">
                 {
                     user?.photoURL ? <img alt="" src={user?.photoURL} /> : <img alt="" src={profilePic} />
                 }
             </div>
-        </div>
+        </NavLink>
 
 
     </>

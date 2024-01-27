@@ -8,7 +8,7 @@ const auth = getAuth(app);
 const AuthProvider = ({ children }) => {
 
     const [user, setUser] = useState(null);
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
 
     // create user
     const createUser = (email, password) => {
@@ -51,15 +51,17 @@ const AuthProvider = ({ children }) => {
             // get and set token
             if (currentUser) {
                 axios.post('http://localhost:5000/jwt', { email: currentUser.email })
-                    .then(data => {
+                    .then(res => {
                         // console.log(data.data.token);
-                        localStorage.setItem('access-token', data.data.token);
-                        setLoading(false);
+                        if (res.data.token) {
+                            localStorage.setItem('access-token', res.data.token);
+                            setLoading(false);
+                        }
                     })
             }
             else {
                 localStorage.removeItem('access-token');
-                // setLoading(false)
+                setLoading(false);
             }
 
         })

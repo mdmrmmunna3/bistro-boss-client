@@ -5,7 +5,7 @@ import './OrderTabs.css'
 // import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 
 const OrderTabs = ({ items }) => {
-    console.log(items);
+    // console.log(items);
     const [currentPage, setCurrentPage] = useState(0);
     const itemPerPage = 6;
 
