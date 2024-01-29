@@ -1,14 +1,17 @@
 import { createContext, useEffect, useState } from "react";
 import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import { app } from "../firebase/firebase.config";
-import axios from "axios";
+
+import useAxiosPublic from "../Hooks/useAxiosPublic";
 export const AuthContext = createContext(null);
 const auth = getAuth(app);
+
 
 const AuthProvider = ({ children }) => {
 
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
+    const axiosPublic = useAxiosPublic();
 
     // create user
     const createUser = (email, password) => {
@@ -50,7 +53,7 @@ const AuthProvider = ({ children }) => {
 
             // get and set token
             if (currentUser) {
-                axios.post('http://localhost:5000/jwt', { email: currentUser.email })
+                axiosPublic.post('https://bistro-boss-server-eta-bice.vercel.app/jwt', { email: currentUser.email })
                     .then(res => {
                         // console.log(data.data.token);
                         if (res.data.token) {
@@ -68,7 +71,7 @@ const AuthProvider = ({ children }) => {
         return () => {
             return unSubscribe();
         }
-    }, []);
+    }, [axiosPublic]);
 
 
     const authInfo = {

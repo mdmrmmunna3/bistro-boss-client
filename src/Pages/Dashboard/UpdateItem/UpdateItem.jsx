@@ -50,39 +50,6 @@ const UpdateItem = () => {
             }
         }
 
-        // fetch(img_hosting_url, {
-        //     method: 'POST',
-        //     body: formData
-        // })
-        //     .then(res => res.json())
-        //     .then(imgResponse => {
-        //         // console.log(imgResponse)
-        //         if (imgResponse.success) {
-        //             const imgURL = imgResponse.data.display_url;
-        //             const { name, price, category, recipe } = data;
-        //             // console.log(data)
-        //             const menuItem = { name, price: parseFloat(price), category, recipe, image: imgURL }
-        //             // console.log(menuItem);
-
-        //             axiosSecure.patch(`/menu/${_id}`, menuItem)
-        //             .then(data => {
-        //                 console.log(data.data)
-        //                 if (data?.data?.modifiedCount > 0) {
-        //                     console.log('after update',data.data.modifiedCount)
-        //                     // reset()
-        //                     Swal.fire({
-        //                         position: "center",
-        //                         icon: "success",
-        //                         title: `${data?.name} is updated to the menu.`,
-        //                         showConfirmButton: false,
-        //                         timer: 1500
-        //                     });
-        //                 }
-        //             })
-                    
-        //         }
-        //     })
-
         console.log(errors);
     }
     return (

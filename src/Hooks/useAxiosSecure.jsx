@@ -4,9 +4,9 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import useAuth from "./useAuth";
 
-// http://localhost:5000
+// https://bistro-boss-server-eta-bice.vercel.app
 const axiosSecure = axios.create({
-    baseURL: 'http://localhost:5000',
+    baseURL: 'https://bistro-boss-server-eta-bice.vercel.app',
 });
 
 const useAxiosSecure = () => {

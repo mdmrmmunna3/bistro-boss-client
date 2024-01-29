@@ -48,37 +48,7 @@ const AddItem = () => {
                                 });
             }
         }
-
-         // using fetch and axios  
-
-        // fetch(img_hosting_url, {
-        //     method: 'POST',
-        //     body: formData
-        // })
-    //         .then(res => res.json())
-    //         .then(imgResponse => {
-    //             if (imgResponse.success) {
-    //                 const imgURL = imgResponse.data.display_url;
-    //                 const { name, price, category, recipe } = data;
-    //                 const newItem = { name, price: parseFloat(price), category, recipe, image: imgURL }
-    //                 // console.log(newItem);
-
-    //                 axiosSecure.post('/menu', newItem)
-    //                     .then(data => {
-    //                         console.log('after posting menu Item', data.data);
-    //                         if (data.data.insertedId) {
-    //                             reset()
-    //                             Swal.fire({
-    //                                 position: "center",
-    //                                 icon: "success",
-    //                                 title: "Item added successfully",
-    //                                 showConfirmButton: false,
-    //                                 timer: 1500
-    //                             });
-    //                         }
-    //                     })
-    //             }
-    //         })
+ 
 
     };
     console.log(errors);
