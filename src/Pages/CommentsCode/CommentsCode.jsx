@@ -97,6 +97,49 @@
     //         .catch(err => console.error(err))
     // }, []);
 
+
+    5. delete user 
+    // .then((result) => {
+        //     if (result.isConfirmed) {
+
+        //         fetch(`https://bistro-boss-server-eta-bice.vercel.app/users/${user?._id}`, {
+        //             method: 'DELETE'
+        //         })
+        //             .then(res => res.json())
+        //             .then(data => {
+        //                 if (data.deletedCount > 0) {
+        //                     refetch();
+        //                     Swal.fire({
+        //                         title: "Deleted!",
+        //                         text: "User has been deleted.",
+        //                         icon: "success"
+        //                     });
+        //                 }
+        //             })
+        //     }
+        // });
+
+        6. foodOrder 
+         // fetch('https://bistro-boss-server-eta-bice.vercel.app/carts', {
+            //     method: 'POST',
+            //     headers: {
+            //         'content-type': 'application/json'
+            //     },
+            //     body: JSON.stringify(cartItem)
+            // })
+            //     .then(res => res.json())
+            //     .then(data => {
+            //         if (data.insertedId) {
+            //             refetch(); // refetch cart to update the number of items in the cart
+            //             Swal.fire({
+            //                 position: "center",
+            //                 icon: "success",
+            //                 title: "Your Food Order Add to Cart Successfully",
+            //                 showConfirmButton: false,
+            //                 timer: 1500
+            //             });
+            //         }
+            //     })
     
 
  */

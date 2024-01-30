@@ -1,6 +1,6 @@
 import HeadingTitel from "../../../components/HeadingTitel/HeadingTitel";
 
-import featuedImg from '../../../assets/home/featured.jpg';
+import featuredImg from '../../../assets/home/featured.jpg';
 import './Featured.css';
 
 const Featured = () => {
@@ -10,11 +10,11 @@ const Featured = () => {
                 <div className=" feature-overlay">
                     <HeadingTitel className="text-white"
                         subHeading="Check it out"
-                        heading="Featued item"
+                        heading="Featured item"
                     ></HeadingTitel>
                     <div className="md:flex justify-center items-center lg:pb-16 lg:px-28 py-4 px-4">
                         <div>
-                            <img src={featuedImg} className="" alt="" />
+                            <img src={featuredImg} className="" alt="" />
                         </div>
                         <div className="md:ml-10">
                             <p>November, 01, 2030</p>

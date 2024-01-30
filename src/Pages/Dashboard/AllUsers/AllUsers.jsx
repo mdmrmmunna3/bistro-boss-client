@@ -29,22 +29,6 @@ const AllUsers = () => {
     })
 
     const handleMakeAdmin = user => {
-        // fetch(`https://bistro-boss-server-eta-bice.vercel.app/users/admin/${user._id}`, {
-        //     method: 'PATCH'
-        // })
-        //     .then(res => res.json())
-        //     .then(data => {
-        //         if (data.modifiedCount) {
-        //             refetch();
-        //             Swal.fire({
-        //                 position: "top-center",
-        //                 icon: "success",
-        //                 title: `${user.name} is an Admin Now`,
-        //                 showConfirmButton: false,
-        //                 timer: 1500
-        //             });
-        //         }
-        //     })
 
         Swal.fire({
             title: "Are you sure?",
@@ -57,13 +41,10 @@ const AllUsers = () => {
         }).then((result) => {
             if (result.isConfirmed) {
 
-                fetch(`https://bistro-boss-server-eta-bice.vercel.app/users/admin/${user._id}`, {
-                    method: 'PATCH'
-                })
-                    .then(res => res.json())
-                    .then(data => {
-
-                        if (data.modifiedCount) {
+                axiosSecure.patch(`/users/admin/${user?._id}`)
+                    .then(res => {
+                        console.log(res.data)
+                        if (res.data.modifiedCount) {
                             refetch();
                             Swal.fire({
                                 position: "top-center",
@@ -106,27 +87,6 @@ const AllUsers = () => {
             }
         });
 
-        // .then((result) => {
-        //     if (result.isConfirmed) {
-
-        //         fetch(`https://bistro-boss-server-eta-bice.vercel.app/users/${user?._id}`, {
-        //             method: 'DELETE'
-        //         })
-        //             .then(res => res.json())
-        //             .then(data => {
-        //                 if (data.deletedCount > 0) {
-        //                     refetch();
-        //                     Swal.fire({
-        //                         title: "Deleted!",
-        //                         text: "User has been deleted.",
-        //                         icon: "success"
-        //                     });
-        //                 }
-        //             })
-
-
-        //     }
-        // });
     }
 
     return (

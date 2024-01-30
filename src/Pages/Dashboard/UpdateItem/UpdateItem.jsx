@@ -23,13 +23,13 @@ const UpdateItem = () => {
         const formData = new FormData();
         formData.append('image', data.image[0]);
 
-        const res = await axiosPublic.post(img_hosting_url, formData , {
+        const res = await axiosPublic.post(img_hosting_url, formData, {
             headers: {
                 'content-type': 'multipart/form-data'
             }
         });
 
-        if(res.data.success){
+        if (res.data.success) {
             const menuItem = {
                 name: data.name,
                 category: data.category,
@@ -39,14 +39,14 @@ const UpdateItem = () => {
             }
             const menuRes = await axiosSecure.patch(`/menu/${_id}`, menuItem)
             console.log(menuRes.data)
-            if (menuRes?.data?.modifiedCount > 0){
+            if (menuRes?.data?.modifiedCount > 0) {
                 Swal.fire({
-                                            position: "center",
-                                            icon: "success",
-                                            title: `${data?.name} is updated to the menu.`,
-                                            showConfirmButton: false,
-                                            timer: 1500
-                                        });
+                    position: "center",
+                    icon: "success",
+                    title: `${data?.name} is updated to the menu.`,
+                    showConfirmButton: false,
+                    timer: 1500
+                });
             }
         }
 

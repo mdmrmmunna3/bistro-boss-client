@@ -5,6 +5,7 @@ import useCart from "../../Hooks/useCart";
 import useAuth from "../../Hooks/useAuth";
 import useAdmin from "../../Hooks/useAdmin";
 import { useState } from "react";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
 
 
 
@@ -16,32 +17,26 @@ const FoodOrder = ({ item }) => {
     const location = useLocation();
     const [isAdmin] = useAdmin();
     const [isDisabled, setIsDisabled] = useState(isAdmin);
+    const [axiosSecure] = useAxiosSecure();
 
-    const handleAddToCart = (item) => {
+    const handleAddToCart = async (item) => {
         console.log(item);
         if (user && user.email) {
             const cartItem = { menuItemId: _id, name, image, price, email: user?.email }
-            fetch('https://bistro-boss-server-eta-bice.vercel.app/carts', {
-                method: 'POST',
-                headers: {
-                    'content-type': 'application/json'
-                },
-                body: JSON.stringify(cartItem)
-            })
-                .then(res => res.json())
-                .then(data => {
-                    if (data.insertedId) {
-                        refetch(); // refetch cart to update the number of items in the cart
-                        Swal.fire({
-                            position: "center",
-                            icon: "success",
-                            title: "Your Food Order Add to Cart Successfully",
-                            showConfirmButton: false,
-                            timer: 1500
-                        });
-                    }
-                })
+
+            const cartItemData = await axiosSecure.post('/carts', cartItem);
+            if (cartItemData.data.insertedId) {
+                refetch(); // refetch cart to update the number of items in the cart
+                Swal.fire({
+                    position: "center",
+                    icon: "success",
+                    title: "Your Food Order Add to Cart Successfully",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            }
         }
+
         else {
             Swal.fire({
                 title: "Please Login for food order!",
@@ -77,7 +72,7 @@ const FoodOrder = ({ item }) => {
             <figure><img className="h-60" src={image} alt="Salad" /></figure>
             <p className="bg-neutral text-white top-0 right-0 absolute mt-5 me-5 px-4 py-2">${price}</p>
             <div className="card-body text-center">
-                <h2 className="text-xl font-semibold">{name}</h2>
+                <h2 className="text-lg font-semibold">{name}</h2>
                 <p>{recipe}</p>
                 {
                     <div className=" justify-center">

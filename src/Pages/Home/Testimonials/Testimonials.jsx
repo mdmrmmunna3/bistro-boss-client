@@ -18,9 +18,9 @@ import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 
 const Testimonials = () => {
     const axiosPublic = useAxiosPublic();
-   
-    const {data: reviews = []} = useQuery({
-        queryKey:['reviews'],
+
+    const { data: reviews = [] } = useQuery({
+        queryKey: ['reviewData'],
         queryFn: async () => {
             const res = axiosPublic('/reviews')
             return res.data

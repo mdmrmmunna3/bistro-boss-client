@@ -1,23 +1,44 @@
 
-import { useQuery } from "@tanstack/react-query";
-import useAxiosPublic from "../../../Hooks/useAxiosPublic";
+// import { useQuery } from "@tanstack/react-query";
+// import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 import HeadingTitel from "../../../components/HeadingTitel/HeadingTitel";
 import ChefRecommendsCards from "./ChefRecommendsCards";
+import { useEffect, useState } from "react";
 
 
 const ChefRecomends = () => {
-    
-    const axiosPublic = useAxiosPublic();
-   
-    const {data: chefRecommends = []} = useQuery({
-        queryKey:['menu'],
-        queryFn: async () => {
-            const res = axiosPublic('/menu')
-            const recommendsCards = res.data.filter(cards => cards.category === 'salad');
+    const [chefRecommends, setChefRecommends] = useState([]);
+    // const axiosPublic = useAxiosPublic();
+
+    // const { data: chefRecommends = [] } = useQuery({
+    //     queryKey: ['menu'],
+    //     queryFn: async () => {
+    //         const res = await axiosPublic.get('/menu');
+    //         console.log(res.data)
+    //         const recommendsCards = res.data.filter(cards => cards.category === 'salad');
+    //         const saladItems = recommendsCards.filter(saladItem => saladItem.name === 'Chicken and Walnut Salad');
+    //         console.log(saladItems)
+    //         return saladItems
+    //     }
+    // })
+
+    useEffect(() => {
+        fetch('https://bistro-boss-server-eta-bice.vercel.app/menu')
+            .then(res => res.json())
+            .then(data => {
+                const recommendsCards = data.filter(cards => cards.category === 'salad');
                 const saladItems = recommendsCards.filter(saladItem => saladItem.name === 'Chicken and Walnut Salad');
-            return saladItems
-        }
-    })
+                setChefRecommends(saladItems);
+
+                // for(let i =0; i<= recommendsCards.length; i++) {
+                //     const index = i;
+                //     const element = recommendsCards[index];
+                //     console.log(element);
+                // }
+
+            })
+            .catch(err => console.error(err))
+    }, []);
 
     return (
         <section className="mb-10 md:mx-16 lg:mx-28">

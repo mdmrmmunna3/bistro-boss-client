@@ -8,6 +8,7 @@ import SocialLogin from "../../components/SocialLogin/SocialLogin";
 import useAuth from "../../Hooks/useAuth";
 import authPic from "../../assets/others/authentication.gif"
 
+
 const SignUp = () => {
     const {
         register,
@@ -18,7 +19,6 @@ const SignUp = () => {
 
     const { createUser, userUpdateProfile } = useAuth();
     const navigate = useNavigate();
-
 
     const onSubmit = (data) => {
         // console.log(data);

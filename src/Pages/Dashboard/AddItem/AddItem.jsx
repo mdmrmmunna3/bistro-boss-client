@@ -21,13 +21,13 @@ const AddItem = () => {
         const formData = new FormData();
         formData.append('image', data.image[0]);
 
-        const res = await axiosPublic.post(img_hosting_url, formData , {
+        const res = await axiosPublic.post(img_hosting_url, formData, {
             headers: {
                 'content-type': 'multipart/form-data'
             }
         });
 
-        if(res.data.success) {
+        if (res.data.success) {
             const newItem = {
                 name: data.name,
                 category: data.category,
@@ -37,18 +37,18 @@ const AddItem = () => {
             }
             const menuRes = await axiosSecure.post('/menu', newItem)
             console.log(menuRes.data)
-            if(menuRes.data.insertedId) {
+            if (menuRes.data.insertedId) {
                 reset()
-                                Swal.fire({
-                                    position: "center",
-                                    icon: "success",
-                                    title: "Item added successfully",
-                                    showConfirmButton: false,
-                                    timer: 1500
-                                });
+                Swal.fire({
+                    position: "center",
+                    icon: "success",
+                    title: "Item added successfully",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
             }
         }
- 
+
 
     };
     console.log(errors);
