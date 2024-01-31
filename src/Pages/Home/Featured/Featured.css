@@ -16,6 +16,11 @@
     overflow: hidden;
 }
 
+.featureImg-main img {
+    border-top-right-radius: 80px;
+    border-bottom-left-radius: 80px;
+}
+
 /* mobile device responsive start  */
 @media only screen and (max-width:576px) {
     .text-style {

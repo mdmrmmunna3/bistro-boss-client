@@ -5,7 +5,7 @@ const useMenu = () => {
     const { data: menu = [], isLoading: loading, refetch } = useQuery({
         queryKey: ['menu'],
         queryFn: async () => {
-            const res = await fetch('https://bistro-boss-server-eta-bice.vercel.app/menu')
+            const res = await fetch('https://bistro-boss.up.railway.app/menu')
             return res.json();
         }
     })
@@ -14,7 +14,7 @@ const useMenu = () => {
     // using useeffct method 
 
     // useEffect(() => {
-    //     fetch('https://bistro-boss-server-eta-bice.vercel.app/menu')
+    //     fetch('https://bistro-boss.up.railway.app/menu')
     //         .then(res => res.json()) // convert respon to json 
     //         .then(data => {
     //             setMenu(data);

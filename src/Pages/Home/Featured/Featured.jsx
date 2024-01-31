@@ -13,7 +13,7 @@ const Featured = () => {
                         heading="Featured item"
                     ></HeadingTitel>
                     <div className="md:flex justify-center items-center lg:pb-16 lg:px-28 py-4 px-4">
-                        <div>
+                        <div className="featureImg-main">
                             <img src={featuredImg} className="" alt="" />
                         </div>
                         <div className="md:ml-10">

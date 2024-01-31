@@ -121,7 +121,7 @@ export const router = createBrowserRouter([
             {
                 path: "updateItem/:id",
                 element: <AdminRoute><UpdateItem></UpdateItem></AdminRoute>,
-                loader: ({ params }) => fetch(`https://bistro-boss-server-eta-bice.vercel.app/menu/${params.id}`)
+                loader: ({ params }) => fetch(`https://bistro-boss.up.railway.app/menu/${params.id}`)
             },
             {
                 path: "allBookings",

@@ -61,8 +61,8 @@ const Category = () => {
                 <div className="hero h-96 bg-fixed" style={{ backgroundImage: `url(${chef})` }}>
                     <div className="hero-overlay bg-opacity-60"></div>
                     <div className="hero-content text-center text-neutral-content">
-                        <div className=" bg-white text-black py-4 md:py-12 px-8 md:mx-10">
-                            <h1 className="mb-5 lg:text-4xl md:text-3xl text-2xl font-light uppercase">Bistro Boos</h1>
+                        <div className=" bg-[#0f1d22] text-white py-4 md:py-12 px-8 md:mx-10" style={{ borderRadius: '0 50px 0 50px' }}>
+                            <h1 className="mb-5 lg:text-4xl md:text-3xl text-2xl font-light uppercase text-yellow-600">Bistro Boos</h1>
                             <p className="mb-5 text-center">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus rem nesciunt brarchitecto consequuntur error corrupti debitis repudiandae placeat vitae explicabo modi soluta quisquam quam, beatae iure incidunt pariatur aut laboriosam voluptate. Fuga qui quisquam odio!</p>
 
                         </div>

@@ -3,7 +3,7 @@ import HeadingTitel from "../../../components/HeadingTitel/HeadingTitel";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 // import useMenu from "../../../Hooks/useMenu";
 import Swal from "sweetalert2";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 // import useMenu from "../../../Hooks/useMenu";
 
@@ -15,6 +15,7 @@ const UpdateItem = () => {
     const [axiosSecure] = useAxiosSecure();
     const axiosPublic = useAxiosPublic();
     const { _id } = useLoaderData();
+    const navigate = useNavigate();
     // const [menu, , refetch] = useMenu();
     // const { _id } = menu;
 
@@ -38,7 +39,7 @@ const UpdateItem = () => {
                 image: res.data.data.display_url
             }
             const menuRes = await axiosSecure.patch(`/menu/${_id}`, menuItem)
-            console.log(menuRes.data)
+            // console.log(menuRes.data)
             if (menuRes?.data?.modifiedCount > 0) {
                 Swal.fire({
                     position: "center",
@@ -47,6 +48,7 @@ const UpdateItem = () => {
                     showConfirmButton: false,
                     timer: 1500
                 });
+                navigate('/dashboard/manageItems');
             }
         }
 

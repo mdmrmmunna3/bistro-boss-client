@@ -28,7 +28,7 @@ const PopularMenu = () => {
             </div>
             <div className="mt-6 text-center">
                 <Link to="/menu">
-                    <button className="uppercase btn btn-outline border-0  border-b-2 border-b-neutral text-neutral">View full menu</button>
+                    <button className="uppercase btn btn-outline border-0 border-b-2 border-b-yellow-600 text-yellow-600">View full menu</button>
                 </Link>
             </div>
         </section>

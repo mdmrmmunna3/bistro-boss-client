@@ -31,7 +31,7 @@ const SignUp = () => {
                     .then(() => {
                         // console.log('user profile info update');
                         const saveUser = { name: data.name, email: data.email }
-                        fetch('https://bistro-boss-server-eta-bice.vercel.app/users', {
+                        fetch('https://bistro-boss.up.railway.app/users', {
                             method: 'POST',
                             headers: {
                                 'content-type': 'application/json'

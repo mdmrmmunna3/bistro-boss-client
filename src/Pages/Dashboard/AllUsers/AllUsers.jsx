@@ -15,7 +15,7 @@ const AllUsers = () => {
 
     // this query function related tanstack query/react query version 3 
     //  const { data: users = [], refetch } = useQuery(['users'], async () => {
-    //     const res = await fetch('https://bistro-boss-server-eta-bice.vercel.app/users')
+    //     const res = await fetch('https://bistro-boss.up.railway.app/users')
     //     return res.json();
     // })
 
@@ -44,7 +44,7 @@ const AllUsers = () => {
                 axiosSecure.patch(`/users/admin/${user?._id}`)
                     .then(res => {
                         console.log(res.data)
-                        if (res.data.modifiedCount) {
+                        if (res.data.modifiedCount > 0) {
                             refetch();
                             Swal.fire({
                                 position: "top-center",
@@ -96,7 +96,7 @@ const AllUsers = () => {
             </Helmet>
             {/* common heading  */}
             <HeadingTitel
-                subHeading="How Many??"
+                subHeading="How Many?"
                 heading="Manage All Users"
             ></HeadingTitel>
 

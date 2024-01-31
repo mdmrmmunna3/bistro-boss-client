@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form';
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 import useAxiosPublic from "../../../Hooks/useAxiosPublic";
+import { useNavigate } from "react-router-dom";
 // import useAxiosSecure from './useAxiosSecure';
 
 
@@ -15,6 +16,7 @@ const AddItem = () => {
     const img_hosting_url = `https://api.imgbb.com/1/upload?key=${img_hosting_key}`;
     const [axiosSecure] = useAxiosSecure();
     const axiosPublic = useAxiosPublic();
+    const navigate = useNavigate();
 
     const onSubmit = async (data) => {
         // console.log(data)
@@ -36,7 +38,7 @@ const AddItem = () => {
                 image: res.data.data.display_url
             }
             const menuRes = await axiosSecure.post('/menu', newItem)
-            console.log(menuRes.data)
+            // console.log(menuRes.data)
             if (menuRes.data.insertedId) {
                 reset()
                 Swal.fire({
@@ -46,6 +48,7 @@ const AddItem = () => {
                     showConfirmButton: false,
                     timer: 1500
                 });
+                navigate('/dashboard/manageItems');
             }
         }
 

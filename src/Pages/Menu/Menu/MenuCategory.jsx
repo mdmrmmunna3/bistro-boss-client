@@ -17,7 +17,7 @@ const MenuCategory = ({ items, viewBtn, titel, img, details }) => {
             </div>
             <div className="my-6 text-center">
                 <Link to={`/order/${titel}`}>
-                    <button className="uppercase btn btn-outline border-0  border-b-2 border-b-neutral text-neutral">{viewBtn}</button>
+                    <button className="uppercase btn btn-outline border-0  border-b-2 border-b-yellow-600 text-yellow-600">{viewBtn}</button>
                 </Link>
             </div>
         </div>

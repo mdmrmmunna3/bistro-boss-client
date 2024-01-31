@@ -23,7 +23,7 @@ const ChefRecomends = () => {
     // })
 
     useEffect(() => {
-        fetch('https://bistro-boss-server-eta-bice.vercel.app/menu')
+        fetch('https://bistro-boss.up.railway.app/menu')
             .then(res => res.json())
             .then(data => {
                 const recommendsCards = data.filter(cards => cards.category === 'salad');

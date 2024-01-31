@@ -4,8 +4,11 @@
 
 .react-tabs__tab {
     border: 0;
+    /* color: rgb(255, 145, 0); */
+    color: rgb(0, 204, 255);
 }
 
 .react-tabs__tab--selected {
-    border-top: 2px solid yellow;
+    border-top: 2px solid rgb(255, 145, 0);
+    ;
 }

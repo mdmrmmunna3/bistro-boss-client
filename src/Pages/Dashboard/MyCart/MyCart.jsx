@@ -28,7 +28,7 @@ const MyCart = () => {
         }).then((result) => {
             if (result.isConfirmed) {
 
-                fetch(`https://bistro-boss-server-eta-bice.vercel.app/carts/${item._id}`, {
+                fetch(`https://bistro-boss.up.railway.app/carts/${item._id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())

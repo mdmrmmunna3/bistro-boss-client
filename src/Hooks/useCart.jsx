@@ -13,7 +13,7 @@ const useCart = () => {
         enabled: !loading, //login problem solved!
 
         // queryFn: async () => {
-        //     const res = await fetch(`https://bistro-boss-server-eta-bice.vercel.app/carts?email=${user?.email}`, {
+        //     const res = await fetch(`https://bistro-boss.up.railway.app/carts?email=${user?.email}`, {
         //         headers: {
         //             authorization: `bearer ${token}`
         //         }

@@ -71,7 +71,7 @@
          // const [reviews, setReviews] = useState([]);
 
     // useEffect(() => {
-    //     fetch('https://bistro-boss-server-eta-bice.vercel.app/reviews')
+    //     fetch('https://bistro-boss.up.railway.app/reviews')
     //         .then(res => res.json())
     //         .then(data => setReviews(data))
     //         .catch(err => console.error(err))
@@ -80,7 +80,7 @@
     * 4. chefrecomeded datas
     // const [chefRecommends, setChefRecommends] = useState([]);
     // useEffect(() => {
-    //     fetch('https://bistro-boss-server-eta-bice.vercel.app/menu')
+    //     fetch('https://bistro-boss.up.railway.app/menu')
     //         .then(res => res.json())
     //         .then(data => {
     //             const recommendsCards = data.filter(cards => cards.category === 'salad');
@@ -102,7 +102,7 @@
     // .then((result) => {
         //     if (result.isConfirmed) {
 
-        //         fetch(`https://bistro-boss-server-eta-bice.vercel.app/users/${user?._id}`, {
+        //         fetch(`https://bistro-boss.up.railway.app/users/${user?._id}`, {
         //             method: 'DELETE'
         //         })
         //             .then(res => res.json())
@@ -120,7 +120,7 @@
         // });
 
         6. foodOrder 
-         // fetch('https://bistro-boss-server-eta-bice.vercel.app/carts', {
+         // fetch('https://bistro-boss.up.railway.app/carts', {
             //     method: 'POST',
             //     headers: {
             //         'content-type': 'application/json'

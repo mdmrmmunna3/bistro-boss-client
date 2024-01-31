@@ -12,20 +12,31 @@ import 'swiper/css/navigation';
 
 // import required modules
 import { Navigation } from 'swiper/modules';
+// import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 
 
 const Testimonials = () => {
+    // const [reviews, setReviews] = useState([]);
     const axiosPublic = useAxiosPublic();
 
+    // using axiossecure 
     const { data: reviews = [] } = useQuery({
         queryKey: ['reviewData'],
         queryFn: async () => {
-            const res = axiosPublic('/reviews')
+            const res = await axiosPublic('/reviews')
             return res.data
         }
     })
+
+    // using useEffect 
+    // useEffect(() => {
+    //     fetch('https://bistro-boss.up.railway.app/reviews')
+    //         .then(res => res.json())
+    //         .then(data => setReviews(data))
+    //         .catch(err => console.error(err))
+    // }, []);
 
     return (
         <section className="my-20 md:mx-16 lg:mx-28">

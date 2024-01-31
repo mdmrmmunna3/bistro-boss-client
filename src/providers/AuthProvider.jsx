@@ -53,7 +53,7 @@ const AuthProvider = ({ children }) => {
 
             // get and set token
             if (currentUser) {
-                axiosPublic.post('https://bistro-boss-server-eta-bice.vercel.app/jwt', { email: currentUser.email })
+                axiosPublic.post('https://bistro-boss.up.railway.app/jwt', { email: currentUser.email })
                     .then(res => {
                         // console.log(data.data.token);
                         if (res.data.token) {
