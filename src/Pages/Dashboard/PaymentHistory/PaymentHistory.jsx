@@ -19,47 +19,51 @@ const PaymentHistory = () => {
 
     return (
         <>
-            <div className="md:w-3/4 w-full">
+            <div className="lg:w-3/4 w-full">
                 <Helmet>
                     <title>Bistro Boss | payment History</title>
                 </Helmet>
                 {/* common heading  */}
                 <HeadingTitel subHeading="At a Galance!" heading="Payment History"></HeadingTitel>
                 <div className="uppercase mb-2 md:mb-4 md:px-0 px-2 md:text-start text-center">
-                    <h3 className="text-xl font-semibold">Total Payments:  {paymentData?.length} </h3>
+                    <h3 className="text-xl font-semibold text-white">Total Payments:  {paymentData?.length} </h3>
                 </div>
 
                 {/* payment body  */}
-                <div className="overflow-x-auto ">
-                    <table className="table text-center">
+                <div className="overflow-x-auto text-white">
+                    <table className="table text-center table-xs">
                         {/* head */}
-                        <thead className="uppercase bg-[#D1A054] text-white">
+                        <thead
+                            style={{
+                                background: `radial-gradient(circle at 10% 20%, rgb(26, 178, 203) 0%, rgb(0, 102, 161) 90.1%)`
+                            }}
+                            className="uppercase text-xs text-white">
                             <tr>
-                                <th>
+                                <th className="py-3">
                                     #
                                 </th>
-                                <th>Email</th>
-                                <th>Transaction Id</th>
-                                <th>Price</th>
-                                <th>Quantity</th>
-                                <th>Payment Date</th>
+                                <th className="py-3">Email</th>
+                                <th className="hidden md:block py-3">Transaction Id</th>
+                                <th className="py-3">Price</th>
+                                <th className="py-3">Quantity</th>
+                                <th className="py-3">Payment Date</th>
                             </tr>
                         </thead>
                         <tbody>
                             {/* row 1 */}
                             {
                                 paymentData.map((payment, index) => <tr key={payment?._id}>
-                                    <td>
+                                    <td className="lg:py-5 md:py-4 py-1">
                                         {index + 1}
                                     </td>
-                                    <td>{payment?.email}</td>
+                                    <td className="lg:py-5 md:py-4 py-1 break-words">{payment?.email}</td>
 
-                                    <td>{payment?.transactionId}</td>
-                                    <td className="">${payment?.price}</td>
-                                    <td>
+                                    <td className="break-words hidden md:block lg:py-5 md:py-4 py-1">{payment?.transactionId}</td>
+                                    <td className="lg:py-5 md:py-4 py-1">${payment?.price}</td>
+                                    <td className="lg:py-5 md:py-4 py-1">
                                         {payment?.quantity}
                                     </td>
-                                    <td>
+                                    <td className="lg:py-5 md:py-4 py-1">
                                         {payment?.date}
                                     </td>
                                 </tr>)
@@ -76,4 +80,4 @@ const PaymentHistory = () => {
     );
 };
 
-export default PaymentHistory;
+export default PaymentHistory; 

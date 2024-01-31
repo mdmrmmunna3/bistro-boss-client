@@ -20,7 +20,6 @@ import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 const Testimonials = () => {
     // const [reviews, setReviews] = useState([]);
     const axiosPublic = useAxiosPublic();
-
     // using axiossecure 
     const { data: reviews = [] } = useQuery({
         queryKey: ['reviewData'],
@@ -47,7 +46,7 @@ const Testimonials = () => {
             <Swiper
                 cssMode={true}
                 navigation={true}
-                autoplay={{ delay: 2000, disableOnInteraction: false }}
+                autoplay={{ delay: 2500, disableOnInteraction: false }}
                 pagination={{
                     clickable: true,
                 }}
@@ -59,15 +58,23 @@ const Testimonials = () => {
                     reviews.map(review => <SwiperSlide
                         key={review._id}
                     >
-                        <div className="flex flex-col items-center md:my-14 my-4 mx-20">
+                        <div
+                            style={{
+                                boxShadow: `rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px`
+                            }}
+                            className="flex flex-col items-center py-3 md:my-14 my-4 mx-20">
                             <Rating
-                                style={{ maxWidth: 180 }}
-                                value={review.rating}
+                                style={{ maxWidth: 150 }}
+                                value={review?.rating}
                                 readOnly
                             />
-                            <i className="fa-solid fa-quote-left text-8xl mt-3"></i>
-                            <p className="md:py-6 py-3">{review.details}</p>
-                            <p className="text-2xl text-orange-500 uppercase">{review?.name}</p>
+                            <div className="avatar mt-3">
+                                <div className="w-24 rounded-full">
+                                    <img src={review?.image} />
+                                </div>
+                            </div>
+                            <p className="md:py-6 py-3 px-2 text-white">{review?.details}</p>
+                            <p className="md:text-2xl text-lg text-orange-500 uppercase">{review?.name}</p>
                         </div>
                     </SwiperSlide>)
                 }

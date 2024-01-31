@@ -82,7 +82,7 @@ const Login = () => {
             <Helmet>
                 <title>Bistro Boss || Login</title>
             </Helmet>
-            <div className="hero min-h-screen">
+            <div className="hero min-h-screen bg-white">
                 <div className="hero-content flex-col lg:flex-row-reverse">
                     <div className="text-center md:w-1/2 lg:text-left">
                         <img src={authPic} alt="" />

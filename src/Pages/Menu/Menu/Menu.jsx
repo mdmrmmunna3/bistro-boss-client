@@ -5,6 +5,7 @@ import dessertImg from '../../../assets/menu/dessert-bg.jpeg'
 import pizzaImg from '../../../assets/menu/pizza-bg.jpg'
 import saladImg from '../../../assets/menu/salad-bg.jpg'
 import soupImg from '../../../assets/menu/soup-bg.jpg'
+import drinkImg from '../../../assets/menu/drinks-bg.jpg'
 import HeadingTitel from "../../../components/HeadingTitel/HeadingTitel";
 import MenuCategory from "./MenuCategory";
 import useMenu from "../../../Hooks/useMenu";
@@ -16,6 +17,7 @@ const Menu = () => {
     const pizza = menu.filter(item => item.category === 'pizza')
     const salad = menu.filter(item => item.category === 'salad')
     const soup = menu.filter(item => item.category === 'soup')
+    const drinks = menu.filter(item => item.category === 'drinks')
     return (
         <div>
             <Helmet>
@@ -60,6 +62,14 @@ const Menu = () => {
                 titel="soup"
                 details="Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
                 items={soup}
+                viewBtn="Order your favourite food"
+            ></MenuCategory>
+
+            <MenuCategory
+                img={drinkImg}
+                titel="Drink"
+                details="Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+                items={drinks}
                 viewBtn="Order your favourite food"
             ></MenuCategory>
 

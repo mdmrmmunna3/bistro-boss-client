@@ -63,23 +63,27 @@ const MyBooking = () => {
                 ></HeadingTitel>
 
                 <div className="uppercase flex justify-between items-center md:mb-6 mb-3 md:px-0 px-2">
-                    <h3 className="md:text-xl text-xs font-semibold ">Total Bookins:{booking.length}</h3>
+                    <h3 className="md:text-xl text-xs font-semibold text-white">Total Bookins:{booking.length}</h3>
 
                 </div>
 
-                <div className="overflow-x-auto ">
-                    <table className="table text-center">
+                <div className="overflow-x-auto text-white">
+                    <table className="table text-center table-xs">
                         {/* head */}
-                        <thead className="uppercase bg-[#D1A054] text-white">
+                        <thead
+                            style={{
+                                background: `radial-gradient(circle at 10% 20%, rgb(26, 178, 203) 0%, rgb(0, 102, 161) 90.1%)`
+                            }}
+                            className="uppercase text-xs text-white">
                             <tr>
-                                <th>
+                                <th className="md:py-3 py-2">
                                     #
                                 </th>
-                                <th>Name</th>
-                                <th>Guest Number</th>
-                                <th>Booking Date</th>
-                                <th>Booking Time</th>
-                                <th>Action</th>
+                                <th className="md:py-3 py-2">Name</th>
+                                <th className="break-words md:py-3 py-2">Guest</th>
+                                <th className="md:py-3 py-2">Book Date</th>
+                                <th className="md:py-3 py-2">Book Time</th>
+                                <th className="md:py-3 py-2">Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -102,7 +106,7 @@ const MyBooking = () => {
                                     <td>{item?.bookingTime}</td>
 
                                     <td>
-                                        <button onClick={() => handleDelete(item)} className="btn btn-ghost bg-red-600 text-white btn-sm"><FaRegTrashAlt ></FaRegTrashAlt></button>
+                                        <button onClick={() => handleDelete(item)} className="btn btn-[#fff] bg-red-600 text-white btn-sm"><FaRegTrashAlt ></FaRegTrashAlt></button>
                                     </td>
                                 </tr>)
                             }

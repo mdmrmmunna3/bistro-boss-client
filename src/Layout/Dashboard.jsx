@@ -1,4 +1,4 @@
-import { NavLink, Outlet } from "react-router-dom";
+import { Link, NavLink, Outlet } from "react-router-dom";
 
 import { FaShoppingCart, FaHome, FaCalendarAlt, FaWallet, FaShoppingBag, FaUtensils, FaBook, FaUsers } from "react-icons/fa";
 import { MdPostAdd, MdEditCalendar, MdOutlineMenu, MdContacts } from "react-icons/md";
@@ -40,11 +40,16 @@ const Dashboard = () => {
                     </div>
                     <div className="drawer-side">
                         <label htmlFor="my-drawer-2" aria-label="close sidebar" className="drawer-overlay"></label>
-                        <ul className="menu bg_none p-4 h-screen w-80 uppercase bg-[#D1A054]">
-                            <div className="block uppercase font-semibold mb-10">
-                                <h3 className="text-2xl">Bistro Boss</h3>
-                                <h3 className="text-xl" style={{ letterSpacing: '3px' }}>Restaurant</h3>
-                            </div>
+                        <ul
+                            style={{
+                                background: `radial-gradient(circle at 10% 20%, rgb(26, 178, 203) 0%, rgb(0, 102, 161) 90.1%)`
+                                // background: `radial-gradient(circle at 12.3% 19.3%, rgb(85, 88, 218) 0%, rgb(95, 209, 249) 100.2%)`,
+                            }}
+                            className="menu bg_none p-4 h-screen w-80 uppercase font-bold">
+                            <Link to="/" className="block uppercase font-semibold mb-10 text-white">
+                                <h3 className="text-2xl" style={{ letterSpacing: '2px' }}>Bistro Boss</h3>
+                                <h3 className="text-xl" style={{ letterSpacing: '4px' }}>Restaurant</h3>
+                            </Link>
                             {/* Sidebar content here */}
 
                             {/* {setLoading(false) || */}

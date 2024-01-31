@@ -69,7 +69,7 @@ const AdminHome = () => {
                 <title>Bistro Boss || Admin Home</title>
             </Helmet>
             <div className=" w-full px-4">
-                <h2 className="lg:text-3xl text-2xl mt-4 uppercase">Hi, {user?.displayName} </h2>
+                <h2 className="lg:text-3xl text-2xl mt-4 uppercase text-white">Hi, {user?.displayName} </h2>
 
                 <div className="grid lg:grid-cols-4 md:grid-cols-2 my-6 gap-4">
                     <div

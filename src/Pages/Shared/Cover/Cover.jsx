@@ -10,9 +10,11 @@ const Cover = ({ img, titel, details }) => {
                 bgImageAlt="menu bg img"
                 strength={-200}
             >
-                <div className="hero md:h-[700px] h-[350px]">
-                    <div className="">
-                        <div className="hero-content menu-overlay md:px-44 md:py-12 p-0 text-center text-white">
+                <div className="hero md:h-[550px] h-[350px]">
+                    <div className="" >
+                        <div
+                            style={{ borderRadius: '0 50px 0 50px' }}
+                            className="hero-content menu-overlay md:px-44 md:py-12 p-0 text-center text-white">
                             <div className="max-w-md">
                                 <h1 className="mb-5 text-5xl font-bold">{titel}</h1>
                                 <p className="mb-5">{details}</p>

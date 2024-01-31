@@ -52,22 +52,26 @@ const ManageItems = () => {
             <HeadingTitel subHeading="Hurry Up!" heading="Manage All Items"></HeadingTitel>
 
             <div className="uppercase mb-2 md:mb-4 md:px-0 px-2 md:text-start text-center">
-                <h3 className="text-xl font-semibold">Total Items: {menu.length}  </h3>
+                <h3 className="text-xl font-semibold text-white">Total Items: {menu.length}  </h3>
             </div>
 
-            <div className="overflow-x-auto ">
-                <table className="table">
+            <div className="overflow-x-auto text-white">
+                <table className="table table-xs">
                     {/* head */}
-                    <thead className="uppercase bg-[#D1A054] text-white">
+                    <thead
+                        style={{
+                            background: `radial-gradient(circle at 10% 20%, rgb(26, 178, 203) 0%, rgb(0, 102, 161) 90.1%)`
+                        }}
+                        className="uppercase text-xs text-white">
                         <tr>
-                            <th>
+                            <th className="py-3">
                                 #
                             </th>
-                            <th>Item Image</th>
-                            <th>Item Name</th>
-                            <th>Price</th>
-                            <th>Update</th>
-                            <th>Delete</th>
+                            <th className="py-3">Item Image</th>
+                            <th className="py-3">Item Name</th>
+                            <th className="py-3">Price</th>
+                            <th className="py-3">Update</th>
+                            <th className="py-3">Delete</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -92,12 +96,16 @@ const ManageItems = () => {
                                 <td className="">${item.price}</td>
                                 <td>
                                     <Link to={`/dashboard/updateItem/${item._id}`}>
-                                        <button className="bg-[#D1A054] text-white btn btn-sm"><FaRegEdit /></button>
+                                        <button
+                                            style={{
+                                                background: `radial-gradient(circle at 10% 20%, rgb(26, 178, 203) 0%, rgb(0, 102, 161) 90.1%)`
+                                            }}
+                                            className=" text-white btn btn-sm"><FaRegEdit /></button>
 
                                     </Link>
                                 </td>
                                 <td>
-                                    <button onClick={() => handleDelete(item)} className="btn btn-ghost bg-red-600 text-white btn-sm"><FaRegTrashAlt ></FaRegTrashAlt></button>
+                                    <button onClick={() => handleDelete(item)} className="btn btn-[#fff] bg-red-600 text-white btn-sm"><FaRegTrashAlt ></FaRegTrashAlt></button>
                                 </td>
                             </tr>)
                         }

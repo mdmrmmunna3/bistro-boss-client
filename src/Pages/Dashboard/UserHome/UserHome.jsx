@@ -13,7 +13,7 @@ import { MdOutlineEventNote } from "react-icons/md";
 const UserHome = () => {
     const { user } = useAuth();
     const [axiosSecure] = useAxiosSecure();
-
+    console.log(user)
     const { data: userStats = {} } = useQuery({
         queryKey: ['user-stats'],
         queryFn: async () => {
@@ -33,7 +33,7 @@ const UserHome = () => {
             </Helmet>
 
             <div className="w-full px-4">
-                <h2 className="lg:text-3xl text-2xl mt-4 uppercase">Hi, {user?.displayName} </h2>
+                <h2 className="lg:text-3xl text-2xl mt-4 uppercase text-white">Hi, {user?.displayName} </h2>
 
                 <div className="grid lg:grid-cols-3 md:grid-cols-2 my-6 gap-4">
                     <div
@@ -100,9 +100,9 @@ const UserHome = () => {
                 {/* profile part  */}
                 <div className="grid md:grid-cols-2 mb-6">
                     {/* profile img  */}
-                    <div className="flex flex-col justify-center items-center w-full py-16 px-28 bg-[#FFEDD5] hover:bg-[#BB34F5] border-2 md:border-r-[#D1A054] md:border-b-0 border-b-[#D1A054] hover:text-white duration-700 ease-in-out">
+                    <div className="flex flex-col justify-center items-center w-full py-16 px-28 bg-[#FFEDD5] hover:bg-[#BB34F5] border-2 md:border-r-[#0f1d22] md:border-b-0 border-b-[#0f1d22] hover:text-white duration-700 ease-in-out">
                         <div className="avatar online mb-6">
-                            <div className="w-24 rounded-full ring ring-[#D1A054] ring-offset-base-100 ring-offset-1">
+                            <div className="w-24 rounded-full ring ring-[#0f1d22] ring-offset-base-100 ring-offset-1">
                                 {
                                     user?.photoURL ? <img src={user?.photoURL} alt="" /> : <img src={profilePic} />
                                 }

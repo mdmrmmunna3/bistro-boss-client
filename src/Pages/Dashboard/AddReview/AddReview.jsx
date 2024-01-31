@@ -32,8 +32,8 @@ const AddReview = () => {
             likedRecipe: data.likedRecipe,
             suggestion: data.suggestion,
             details: data.details,
-            rating: data.rating
-
+            rating: data.rating,
+            image: user?.photoURL
         }
         const reviewData = await axiosSecure.post('/reviews', review);
         console.log(reviewData);

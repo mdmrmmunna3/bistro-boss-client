@@ -63,18 +63,22 @@ const MyCart = () => {
                         heading="Wanna Add More?"
                     ></HeadingTitel>
 
-                    <div className="uppercase flex justify-between items-center md:mb-6 mb-3 md:px-0 px-2">
-                        <h3 className="md:text-xl text-xs font-semibold ">Total Orders:{cart.length}</h3>
-                        <h3 className="md:text-xl text-xs font-semibold ">Total Price:${totalPrice}</h3>
+                    <div className="uppercase flex justify-between items-center md:mb-6 mb-3 md:px-0 px-2 text-white">
+                        <h3 className="md:text-xl text-xs font-semibold ">Total Orders: {cart.length}</h3>
+                        <h3 className="md:text-xl text-xs font-semibold ">Total Price: ${totalPrice}</h3>
                         <Link to="/dashboard/payment">
                             <button className="btn bg-[#D1A054] text-white btn-sm hover:text-black">Pay</button>
                         </Link>
                     </div>
 
-                    <div className="overflow-x-auto ">
+                    <div className="overflow-x-auto text-white">
                         <table className="table">
                             {/* head */}
-                            <thead className="uppercase bg-[#D1A054] text-white">
+                            <thead
+                                style={{
+                                    background: `radial-gradient(circle at 10% 20%, rgb(26, 178, 203) 0%, rgb(0, 102, 161) 90.1%)`
+                                }}
+                                className="uppercase text-white">
                                 <tr>
                                     <th>
                                         #
@@ -106,7 +110,7 @@ const MyCart = () => {
                                         <td>{item.name}</td>
                                         <td className="">${item.price}</td>
                                         <td>
-                                            <button onClick={() => handleDelete(item)} className="btn btn-ghost bg-red-600 text-white btn-sm"><FaRegTrashAlt ></FaRegTrashAlt></button>
+                                            <button onClick={() => handleDelete(item)} className="btn btn-[#fff] bg-red-600 text-white btn-sm"><FaRegTrashAlt ></FaRegTrashAlt></button>
                                         </td>
                                     </tr>)
                                 }

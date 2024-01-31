@@ -52,7 +52,7 @@ const Reservation = () => {
                     <div className="grid md:grid-cols-3 gap-3 mx-3 md:mx-0">
                         <label className="form-control w-full">
                             <div className="label">
-                                <span className="label-text font-semibold">Date*</span>
+                                <span className="label-text font-semibold text-white">Date*</span>
                             </div>
                             <input type="date"
                                 {...register("bookingDate", { required: true })}
@@ -61,7 +61,7 @@ const Reservation = () => {
 
                         <label className="form-control w-full">
                             <div className="label">
-                                <span className="label-text font-semibold">Time*</span>
+                                <span className="label-text font-semibold text-white">Time*</span>
                             </div>
                             <input type="time"
                                 {...register("bookingTime", { required: true })}
@@ -70,16 +70,36 @@ const Reservation = () => {
 
                         <label className="form-control w-full ">
                             <div className="label">
-                                <span className="label-text font-semibold">Guest*</span>
+                                <span className="label-text font-semibold text-white">Guest*</span>
                             </div>
-                            <input type="number" placeholder="Select persons"
+                            {/* <input type="number" placeholder="Select persons"
                                 {...register("guestCount", { required: true, maxLength: 10 })}
-                                className="input input-bordered w-full" />
+                                className="input input-bordered w-full" /> */}
+
+                            <select defaultValue="Selecte-Person" {...register("guestCount", { required: true })} className="select select-bordered">
+                                <option disabled >Selecte-Person</option>
+                                <option value='1'>1</option>
+                                <option value='2'>2</option>
+                                <option value='3'>3</option>
+                                <option value='4'>4</option>
+                                <option value='5'>5</option>
+                                <option value='6'>6</option>
+                                <option value='7'>7</option>
+                                <option value='8'>8</option>
+                                <option value='9'>9</option>
+                                <option value='10'>10</option>
+                                <option value='11'>11</option>
+                                <option value='12'>12</option>
+                                <option value='13'>13</option>
+                                <option value='14'>14</option>
+                                <option value='15'>15</option>
+
+                            </select>
                         </label>
 
                         <label className="form-control w-full">
                             <div className="label">
-                                <span className="label-text font-semibold">Name*</span>
+                                <span className="label-text font-semibold text-white">Name*</span>
                             </div>
                             <input type="text" placeholder="Your Name"
                                 {...register("name", { required: true, maxLength: 120 })}
@@ -89,9 +109,9 @@ const Reservation = () => {
 
                         <label className="form-control w-full">
                             <div className="label">
-                                <span className="label-text font-semibold">Phone*</span>
+                                <span className="label-text font-semibold text-white">Phone*</span>
                             </div>
-                            <input type="number" placeholder="Your Phone"
+                            <input type="cel" placeholder="Your Phone"
                                 {...register("phone", { required: true, maxLength: 80 })}
                                 className="input input-bordered w-full" />
 
@@ -99,9 +119,9 @@ const Reservation = () => {
 
                         <label className="form-control w-full">
                             <div className="label">
-                                <span className="label-text font-semibold">Email*</span>
+                                <span className="label-text font-semibold text-white">Email*</span>
                             </div>
-                            <input defaultValue={user?.email} disabled type="email" placeholder="Your Email"
+                            <input defaultValue={user?.email} type="email" placeholder="Your Email"
                                 {...register("email", { required: true, maxLength: 120 })}
                                 className="input input-bordered w-full" />
 
