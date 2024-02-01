@@ -133,7 +133,7 @@ const Reservation = () => {
                             <input
                                 style={
                                     {
-                                        background: `linear-gradient(90deg, #835D23 0%, #B58130 100%)`,
+                                        background: `radial-gradient(circle at 10% 20%, rgb(26, 178, 203) 0%, rgb(0, 102, 161) 90.1%)`,
                                         cursor: 'pointer'
                                     }
                                 }

@@ -62,8 +62,12 @@ const AddReview = () => {
             <HeadingTitel subHeading="Sharing is Caring" heading="Give a Review"></HeadingTitel>
 
             <form onSubmit={handleSubmit(onSubmit)}>
-                <div className="text-center md:px-28 md:py-10 p-4 mx-3 md:mx-0 bg-[#F3F3F3]">
-                    <h2 className="md:text-2xl text-xl uppercase ">
+                <div
+                    style={{
+                        boxShadow: `rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px`
+                    }}
+                    className="text-center md:px-28 md:py-10 p-4 mx-3 md:mx-0 bg-[#0b1315]">
+                    <h2 className="md:text-2xl text-xl uppercase text-yellow-600">
                         Rate Us!
                     </h2>
                     {/* rating part start  */}
@@ -78,9 +82,9 @@ const AddReview = () => {
 
                     <label className="form-control w-full ">
                         <div className="label">
-                            <span className="label-text font-semibold">Name*</span>
+                            <span className="label-text font-semibold text-gray-300">Name*</span>
                         </div>
-                        <input type="text" placeholder="Your Name" defaultValue={user?.displayName} className="input w-full "
+                        <input type="text" placeholder="Your Name" defaultValue={user?.displayName} className="input w-full appearance-none leading-tight focus:outline-none focus:shadow-outline bg-black text-white"
                             {...register("name", { required: true, maxLength: 120 })}
                         />
 
@@ -88,9 +92,9 @@ const AddReview = () => {
 
                     <label className="form-control w-full ">
                         <div className="label">
-                            <span className="label-text font-semibold">Email*</span>
+                            <span className="label-text font-semibold text-gray-300">Email*</span>
                         </div>
-                        <input type="text" placeholder="Your Name" defaultValue={user?.email} className="input w-full "
+                        <input type="text" placeholder="Your Name" defaultValue={user?.email} className="input w-full appearance-none leading-tight focus:outline-none focus:shadow-outline bg-black text-white"
                             {...register("email", { required: true, maxLength: 120 })}
                         />
 
@@ -98,9 +102,9 @@ const AddReview = () => {
 
                     <label className="form-control w-full ">
                         <div className="label">
-                            <span className="label-text font-semibold">Which recipe you liked most?</span>
+                            <span className="label-text font-semibold text-gray-300">Which recipe you liked most?</span>
                         </div>
-                        <input type="text" placeholder="Recipe you liked most" className="input w-full "
+                        <input type="text" placeholder="Recipe you liked most" className="input w-full appearance-none leading-tight focus:outline-none focus:shadow-outline bg-black text-white"
                             {...register("likedRecipe", { required: true, maxLength: 80 })}
                         />
 
@@ -108,18 +112,18 @@ const AddReview = () => {
 
                     <label className="form-control w-full ">
                         <div className="label">
-                            <span className="label-text font-semibold">Do you have any suggestion for us?</span>
+                            <span className="label-text font-semibold text-gray-300">Do you have any suggestion for us?</span>
                         </div>
-                        <input type="text" placeholder="Suggestion" className="input w-full "
+                        <input type="text" placeholder="Suggestion" className="input w-full appearance-none leading-tight focus:outline-none focus:shadow-outline bg-black text-white"
                             {...register("suggestion", { required: true, maxLength: 80 })}
                         />
                     </label>
 
                     <label className="form-control">
                         <div className="label">
-                            <span className="label-text font-semibold">Kindly express your care in a short way</span>
+                            <span className="label-text font-semibold text-gray-300">Kindly express your care in a short way</span>
                         </div>
-                        <textarea className="textarea h-28" placeholder="Review in detail"
+                        <textarea className="textarea h-28 appearance-none leading-tight focus:outline-none focus:shadow-outline bg-black text-white" placeholder="Review in detail"
                             {...register("details", { required: true, maxLength: 120 })}
                         ></textarea>
                     </label>
@@ -128,13 +132,11 @@ const AddReview = () => {
                     <div className="flex justify-center cursor-pointer mt-3">
                         <div className="flex items-center relative">
                             <input
-                                style={
-                                    {
-                                        background: `linear-gradient(90deg, #835D23 0%, #B58130 100%)`,
-                                        cursor: 'pointer'
-                                    }
-                                }
-                                className=" my-4 text-white px-12 py-2"
+                                style={{
+                                    background: `radial-gradient(circle at 10% 20%, rgb(26, 178, 203) 0%, rgb(0, 102, 161) 90.1%)`,
+                                    cursor: 'pointer'
+                                }}
+                                className=" my-4 text-white px-12 py-2 "
                                 type="submit" value="Send Review"
 
                             />

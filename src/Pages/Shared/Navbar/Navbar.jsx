@@ -6,13 +6,17 @@ import './Navbar.css'
 import useCart from "../../../Hooks/useCart";
 import useAuth from "../../../Hooks/useAuth";
 import useAdmin from "../../../Hooks/useAdmin";
-import profilePic from "../../../assets/others/profile.png"
+import profilePic from "../../../assets/others/profile.png";
+import { MdMenuOpen } from "react-icons/md";
+import { GiCrossedSwords } from "react-icons/gi";
+import { useState } from "react";
 
 const Navbar = () => {
 
     const { user, logOut } = useAuth();
     const [cart] = useCart();
     const [isAdmin] = useAdmin();
+    const [iconSwap, setIconSwap] = useState(false)
 
     const handleLogOut = () => {
         logOut()
@@ -21,6 +25,11 @@ const Navbar = () => {
                 console.log(error.message)
             })
     }
+
+    const handleIconSwap = () => {
+        // Toggle the state of showMenu when the summary is clicked
+        setIconSwap(!iconSwap);
+    };
 
     const navOptions = <>
         <li><NavLink to="/" className={({ isActive }) => isActive ? 'active' : undefined} style={{ textTransform: 'uppercase', fontSize: "12px" }} >Home</NavLink></li>
@@ -70,21 +79,28 @@ const Navbar = () => {
 
     return (
         <>
-            <div className="navbar fixed z-10 opacity-90 font-semibold text-white bg-black ">
+            <div className="navbar fixed z-10 opacity-90 font-semibold text-white bg-[#0b1315] ">
+
                 <div className="navbar-start">
-                    <div className="dropdown">
-                        <label tabIndex={0} className="btn btn-ghost lg:hidden">
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
-                        </label>
-                        <ul tabIndex={0} className="gap-5  menu-sm dropdown-content mt-3 z-[1] p-2 shadow-xl bg-white text-black rounded-box w-96">
+                    <Link to="/" className="uppercase block text-justify">
+                        <h3 className="md:text-sm lg:text-xl text-xs" style={{ letterSpacing: '3px' }}>Bistro Boss</h3>
+                        <h3 className="md:text-sm lg:text-xl text-xs" style={{ letterSpacing: '3px' }}>Restaurant</h3>
+                    </Link>
+                </div>
+
+                <div className="navbar-end lg:hidden">
+                    <details className="dropdown" onClick={handleIconSwap}>
+                        <summary tabIndex={0} className="btn btn-ghost lg:hidden swap swap-rotate">
+                            {iconSwap ? <GiCrossedSwords className="h-6 w-6 fill-current" /> : <MdMenuOpen className="h-6 w-6 fill-current" />}
+                        </summary>
+                        <ul tabIndex={0} className="gap-5 menu-sm right-[1px] dropdown-content mt-3 z-[1] p-2 shadow-xl bg-white text-black rounded-box w-96">
                             {navOptions}
                         </ul>
-                    </div>
-                    <Link to="/" className="uppercase block text-justify">
-                        <h3 className="text-xl">Bistro Boss</h3>
-                        <h3 className="" style={{ letterSpacing: '3px' }}>Restaurant</h3>
-                    </Link>
+                    </details>
                 </div >
+
+
+
                 <div className="navbar-end hidden lg:flex items-center">
                     <ul className="gap-5  menu-horizontal px-1 pt-5">
                         {navOptions}
@@ -93,6 +109,7 @@ const Navbar = () => {
                 {/* <div className="navbar-end">
                     <a className="btn">Button</a>
                 </div> */}
+
             </div >
         </>
     );

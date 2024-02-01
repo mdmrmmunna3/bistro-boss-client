@@ -22,10 +22,10 @@ const Dashboard = () => {
             {
                 <div className="drawer lg:drawer-open">
                     <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-                    <div className="drawer-content flex flex-col items-center ">
+                    <div className="drawer-content flex flex-col items-center relative">
                         {/* Page content here */}
-                        <div className="">
-                            <label htmlFor="my-drawer-2" className="btn drawer-button lg:hidden">
+                        <div className=" fixed right-11 top-3 z-10">
+                            <label htmlFor="my-drawer-2" className=" lg:hidden">
                                 <img src={drawerImg}
                                     style={
                                         {
